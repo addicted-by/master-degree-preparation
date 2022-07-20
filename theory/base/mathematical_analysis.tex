@@ -1,0 +1,1053 @@
+\chapter{Математический анализ}
+
+\begin{multicols}{2}
+    \raggedcolumns 
+    \section{Пределы по Коши и Гейне, непрерывность. Пределы последовательности и функций. Непрерывные функции.}
+    Пусть $x: \N \to \R$. Тогда задана числовая последовательность, причем принято обозначение $x(n) = x_n.$
+    \begin{definition}{(Предел последовательности)}{}
+        Последовательность $\{x_n\}_{n=1}^\infty \subset \mathbb R$, называется сходящейся к $l \in \mathbb R$ (или $l = \lim\limits_{n\to \infty}x_n$), если $(\forall \varepsilon > 0)\  (\exists N\in \mathbb N)\ (\forall n > N):\ |x_n-l| < \varepsilon.$  
+    \end{definition}
+\Ex $\lim\limits_{n\to\infty} \dfrac{1}{n} = 0 \Longleftrightarrow (\forall \varepsilon > 0)\ (\exists N \in \mathbb N)\ (\forall n > N):\ |\dfrac{1}{n}| < \varepsilon \Leftrightarrow \\ \Leftrightarrow n > \dfrac{1}{\varepsilon} \ N = [\dfrac{1}{\varepsilon}] + 1.$ $(\forall \varepsilon > 0) \ N = [\dfrac{1}{\varepsilon}] + 1 \in \mathbb N \ (\forall n > N)\ n>N\rightarrow \\ \rightarrow n > \dfrac{1}{\varepsilon} \rightarrow \dfrac{1}{n} < \varepsilon \hspace{1cm} \square$
+\begin{theorema}{(Единственность предела последовательности)}{}
+    Числовая последовательность не может иметь более одного предела.
+\end{theorema}
+\begin{theorema}{(Свойства предела последовательности)}{}
+    \begin{itemize}    \item (ограниченность сходящихся последовательностей). $\{x_n\}_{n=1}^\infty$ сходится $\Rightarrow \{x_n\}_{n=1}^\infty$ ограничена; \item (отделимость от нуля) Если $\lim\limits_{n\to \infty} x_n = l \neq 0$, то $(\exists N \in \mathbb N)\\(\forall n > N)\ (sign(x_n) = sign(l))\wedge |x_n|>\dfrac{|l|}{2}$; \item (переход к пределу в неравенствах) Если $\lim\limits_{n\to\infty} x_n = l_1,\\ \lim\limits_{n\to\infty} y_n = l_2,\ (\forall n \in \mathbb N)\ x_n \leq y_n, \Rightarrow l_1\leq l_2;$ \item (о промежуточной последовательности) Если $\lim\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty} z_n =\\ = l,\ \forall n \in \mathbb N\ x_n \leq y_n \leq z_n, $ то $\lim\limits_{n\to\infty} y_n = l.$ \end{itemize}
+\end{theorema}
+
+\begin{theorema}{(Арифметические операции со сходящимися последовательностями)}{}
+    Если $\lim\limits_{n\to\infty} x_n = l_1, \ \lim\limits_{n\to\infty} y_n = l_2$, то \begin{itemize}
+		\item $x_n \pm y_n$ сходится к $l_1\pm l_2$;
+		\item $x_n \cdot y_n$ сходится к $l_1 \cdot l_2$;
+		\item если дополнительно $y_n \neq 0, \ \forall n \in \mathbb N, \ l_2\neq 0$, то $\dfrac{x_n}{y_n}$ сходится к $\dfrac{l_1}{l_2}.$
+\end{itemize}
+\end{theorema}
+\begin{definition}{(Бесконечно малая)}{}
+    Бесконечно малой последовательностью называется последовательность, сходящаяся к нулю.    
+\end{definition}
+\begin{theorema}{}{}
+    Произведение бесконечно малой последовательности на ограниченную есть бесконечно малая.
+\end{theorema}
+Эквивалентные обозначения предела из определения: 
+\[	
+    \begin{array}{c}
+        \lim\limits_{n\to\infty} x_n = l \Leftrightarrow (\forall \varepsilon > 0)\ (\exists N \in\mathbb N)\ (\forall n > N)\ |x_n - l| < \varepsilon\\l-\varepsilon < x_n < l + \varepsilon\\x_n \in (l-\varepsilon, l + \varepsilon) =: \text{$\varepsilon$-окрестность } U_\varepsilon(l)
+    \end{array}
+\]
+То есть у каждого действительного числа есть $\varepsilon$-окрестность. Дополняем числовую прямую символами $+\infty, -\infty, \infty.$ Тогда
+\[ \begin{array}{c}
+     U_\varepsilon(+\infty) := (\dfrac{1}{\varepsilon}, +\infty)\\U_\varepsilon(-\infty) := (-\infty, -\dfrac{1}{\varepsilon})\\U_\varepsilon(\infty) = (-\infty, -\dfrac{1}{\varepsilon})\cup (\dfrac{1}{\varepsilon}, +\infty)
+    \end{array}
+\]
+Для них определено отношение порядка, причем $(\forall x \in\mathbb R)\ -\infty < x < +\infty$.Тогда для всех значений предела справедливо определение вида $\lim\limits_{n\to\infty} x_n = l \Leftrightarrow (\forall \varepsilon > 0)\ (\exists N \in\mathbb N)\ (\forall n >N)\ x_n\in U_\varepsilon(l)$. Кроме того, $\overline{\mathbb R} = \mathbb R \cup \{+\infty, -\infty\}, \hat{\mathbb R} = \mathbb R \cup \{\infty\}$
+\begin{definition}{}{}
+    Бесконечно большой последовательностью называется последовательность, имеющая предел $(\pm)\infty$.    
+\end{definition}
+\begin{theorema}{}{}
+    $\{x_n\}_{n=1}^\infty \subset \mathbb R \backslash \{0\}$ бесконечно малая $\Leftrightarrow \{\dfrac{1}{x_n}\}_{n=1}^\infty$ бесконечно большая.    
+\end{theorema}
+\begin{definition}{}{}
+    Последовательность $\{x_n\}_{n = 1}^\infty$\vspace*{0.5cm} 
+
+\hspace{2cm} \footnotesize{называется} \hspace{2cm} \footnotesize{если}
+\[\text{\footnotesize{монотонно}} \left\{\begin{matrix}
+	\begin{aligned}
+		&\text{\footnotesize неубывающей} \hspace{1.4cm} (\forall n \in\mathbb N)\hspace{0.5cm} x_n \leq x_{n+1}\\&\text{\footnotesize невозрастающей} \hspace{1cm} (\forall n \in\mathbb N)\hspace{0.5cm}x_n\geq x_{n+1}\\
+		&\left.\begin{matrix}
+			\begin{aligned}
+			&\text{\footnotesize возрастающей} \hspace{0.9cm}&(\forall n \in\mathbb N) \hspace{0.5cm} &x_n < x_{n+1}\\ 
+			&\text{\footnotesize убывающей} \hspace{1cm} &(\forall n \in\mathbb N)\hspace{0.5cm} &x_n > x_{n+1}
+						\end{aligned}
+		\end{matrix}\right\} \rotatebox{90}{*}
+	\end{aligned}
+\end{matrix}\right.\]
+$* - \text{строго монотонно}$ 
+\end{definition}
+\begin{theorema}{(Вейерштраса)}{}
+    Каждая неубывающая (невозрастающая) ограниченная сверху (снизу) последовательность сходится, причем ее предел равен точной верхней (нижней) грани.
+\end{theorema}
+\begin{note}{}{}
+    (дополнение к т. Вейерштраса) $\forall$ монотонная последовательность имеет предел в $\overline{\mathbb R}$.\\Пусть $\{x_n\}$ -- неубывающая и неограниченная сверху, тогда $(\forall \varepsilon > 0)\ (\exists N \in\mathbb N)\ x_N > \dfrac{1}{\varepsilon}\Longrightarrow \mathmbox{\Rightarrow (\forall n > N)\ x_n \geq x_N > \dfrac{1}{\varepsilon}}$.
+\end{note}
+
+\begin{theorema}{(Принцип Кантора вложенных отрезков)}{}
+    Всякая последовательность вложенных отрезков $\{[a_n,b_n]\}_{n=1}^\infty$ (т.е. $\mathmbox{[a_n,b_n]\supset[a_{n+1}, b_{n+1}], \forall n \in\mathbb N}$) имеет непустое пересечение \mbox{$(\bigcap\limits_{n = 1}^\infty [a_n,b_n]\neq \varnothing)$}.
+\end{theorema}
+\begin{lemma}{(Неравенство Бернулли)}{}
+    $(\forall x \geq -1)\ (\forall n \in\mathbb N)\ (1+x)^n \geq 1 + nx$
+\end{lemma}
+\begin{theorema}{(О числе $e$)}{}
+    Последовательность $x_n = (1+\dfrac{1}{n})^n$ сходится. Ее предел называется числом $e$.
+\end{theorema}
+\begin{definition}{}{}
+    Если $\{n_k\}_{k=1}^\infty$ -- возрастающая последовательность натуральных чисел, то $\{x_{n_k}\}_{k=1}^\infty$ называется подпоследовательностью последовательности $\{x_n\}_{n=1}^\infty$. Если $\exists \lim\limits_{k\to \infty} x_{n_k} = l$, то $l$ называется частичным пределом последовательности $\{x_n\}.$    
+\end{definition}
+\Ex Пусть $\{x_n\}_{n=1}^\infty = \mathbb Q$. Множество частичных пределов этих последовательностей есть $\overline{\mathbb R}.$
+\begin{theorema}{(Больцано-Вейерштрасса)}{}
+    Из каждой ограниченной последовательности можно выделить сходящуюся подпоследовательность.
+\end{theorema}
+\begin{proposition}{}{} $\forall$ числовая последовательность имеет хотя бы один частичный предел (конечный или бесконечный)
+\end{proposition}
+\begin{definition}{}{}
+    Верхним (нижним) пределом числовой последовательности называется наибольший (наименьший) из ее частичных пределов.
+\end{definition}
+\begin{theorema}{(Три определения верхнего и нижнего пределов)}{}
+    Каждая ограниченная последовательность $\{x_n\}$ имеет конечные верхние и нижние пределы $L = \overline{\lim\limits_{n\to\infty}}x_n,\ l = \underline{\lim\limits_{n\to \infty}}x_n$ Справедливы такие следующие утверждения \begin{itemize}
+		\item $((\forall \varepsilon > 0)\ (\exists N\in \mathbb N)\ (\forall n > N):\ x_n < L+ \varepsilon)\wedge\\ \wedge ((\forall \varepsilon > 0)\ (\forall N\in\mathbb N)\ (\exists n > N):\ x_n > L-\varepsilon)\\((\forall \varepsilon > 0)\ (\exists N \in \mathbb N)\ (\forall n > N):\ x_n > l - \varepsilon) \wedge\\\wedge ((\forall \varepsilon > 0)\ (\forall N \in \mathbb N)\ (\exists n > N):\ x_n < l+\varepsilon)$;
+		\item $L = \lim\limits_{n\to\infty} \sup\{x_n, x_{n+1}, \ldots\}\\l = \lim\limits_{n\to\infty} \inf\{x_n, x_{n+1, \ldots}\}$
+\end{itemize}
+\end{theorema}
+\begin{note}{}{}
+    Для произвольной числовой последовательности верхние и нижние пределы также существуют, но могут быть бесконечными.
+\end{note}
+\begin{definition}{}{}
+    Последовательность $\{x_n\}$ называется фундаментальной, если \mbox{$(\forall \varepsilon > 0)\ (\exists N \in \mathbb N)\ (\forall n > N)\ (\forall p \in \mathbb N):\ |x_{n+p} - x_n| < \varepsilon$}
+\end{definition}
+\begin{theorema}{(Критерий Коши сходимости числовых последовательностей)}{}
+    Числовая последовательность сходится тогда и только тогда, когда она фундаментальна.
+\end{theorema}
+\subsection*{Предел функции}
+\begin{definition}{}{}
+    Проколотой $\delta$-окрестностью точки $a \in\mathbb R$ называется множество $\overset{\circ}{U}_\delta (a) = U_\delta(a)\backslash \{a\} = \mathmbox{= (a-\delta, a)\cup (a,a+\delta).} \ \overset{\circ}{U}_\delta((\pm)\infty)  := U_\delta((\pm)\infty).$
+\end{definition}
+\begin{definition}{}{}
+    Пусть функция $f$ определена в некоторой проколотой окрестности точки $a$ $\overset{\circ}{U}_\delta(a),\ a\in\overline{\mathbb R}\cup \{\infty\}.$ Тогда $l = \lim\limits_{x\to a} f(x)\ (l \in \overline{\mathbb R} \cup \{\infty\})$ означает, что:\begin{enumerate*}
+        \item[\footnotesize{по Коши}] \mbox{$(\forall \varepsilon > 0)\ (\exists \delta > 0)\ (\forall x \in\overset{\circ}{U}_\delta (a))\ f(x)\in U_\varepsilon(l)$}
+        \item[\footnotesize{по Гейне}] \mbox{$(\forall \{x_n\}_{n = 1}^\infty \subset \mathscr D(f) \backslash \{a\},\ \lim\limits_{n\to \infty}x_n = a)\ \lim\limits_{n\to\infty} f(x_n) = l$}
+    \end{enumerate*}
+\end{definition}
+\begin{theorema}{}{}
+    Определения предела функции по Коши и по Гейне эквивалентны.
+\end{theorema}
+Пусть $a, l \in\mathbb R$\\$(\forall \varepsilon > 0)\ (\exists \delta > 0)\ (\forall x, 0 < |x-a| < \delta)\ |f(x) - l| < \varepsilon.$
+\begin{theorema}{(Свойства предела функции, связанные с неравенствами)}{}
+    \begin{enumerate*}
+		\item (ограниченность) Если $\lim\limits_{x\to a} f(x) = l \in\mathbb R$, то\\ $(\exists \delta > 0)\ (\exists M \in\mathbb R)\ (\forall x \in\overset{\circ}{U}_\delta(a))\ |f(x)| \leq M$ 
+		\item (отделимость от нуля) Если $\lim\limits_{x\to a} f(x) = l \in\overline{\mathbb R} \backslash \{0\}$, то \\$(\exists c > 0)\ (\exists \delta > 0)\ (\forall x \in\overset{\circ}{U}_\delta(a))\ |f(x)| > c$\\ и $sign\ f(x) = sign\ l\ (sign(\pm \infty) = \pm 1)$
+		\item (предельный переход в неравенствах) \\Если $(\exists \delta_0 > 0)\ (\forall x \in\overset{\circ}{U}_\delta(a))\ f(x) \leq g(x)$ и $\exists \lim\limits_{x\to a}f(x)\lim\limits_{x\to a}g(x) \in\overline{\mathbb R}$, то $\lim\limits_{x\to a}f(x) \leq \lim\limits_{x\to a}g(x)$
+		\item (о промежуточной функции) Если $(\exists \delta_0 > 0)\ (\forall x \in\overset{\circ}{U}_{\delta_0}(a))\ f(x)\leq g(x)\leq h(x)$ и $\exists \lim\limits_{x\to a}f(x) = \lim\limits_{x\to a}h(x)= l \in\overline{\mathbb R}$, то $\lim\limits_{x\to a}g(x) = l.$
+    \end{enumerate*}
+\end{theorema}
+\begin{theorema}{(Свойства предела, связанные с арифметическими операциями)}{}
+    Пусть $\exists \lim\limits_{x\to a}f(x) = A \in\mathbb R, \lim\limits_{x\to a}g(x) = B \in\mathbb R$. Тогда \begin{enumerate*}
+		\item $\lim\limits_{x\to a}(f(x)\pm g(x)) = A\pm B$
+		\item $\lim\limits_{x\to a}(f(x)\cdot g(x)) = A\cdot B$
+		\item Если $B\neq 0$, то $\lim\limits_{x\to a}\dfrac{f(x)}{g(x)} = \dfrac{A}{B}$
+\end{enumerate*}
+\end{theorema}
+\begin{theorema}{(Критерий Коши существования предела функции)}{}
+    $\exists$ конечный предел $\lim\limits_{x\to a}f(x)$ тогда и только тогда, когда \\$(\forall \varepsilon > 0)\ (\exists \delta> 0)\ (\forall x', x'' \in \prokol)\ |f(x') - f(x'')| < \varepsilon$
+\end{theorema}
+\begin{definition}{}{}
+    Пусть $f$ определена в $(a,b),\ -\infty < a < b < +\infty$. Тогда существует левосторонний предел $B$ в точке $b$ ($B = \lim\limits_{x\to b-0} f(x) = f(b-0)$), если\\1) (по Коши) $(\forall \varepsilon > 0)\ (\exists \delta > 0)\ (\forall x,\ b-\delta < x < b)\ f(x) \in U_\varepsilon(B)$\\2) (по Гейне) $(\forall \{x_n\}\subset (a,b), \lim\limits_{n\to\infty} x_n = b)\ \lim\limits_{n\to\infty}f(x_n) = B$.
+\\Cуществует правосторонний предел $A$ в точке $a$ ($A = \lim\limits_{x\to a+0} f(x) = f(a+0)$), если \\1) (по Коши) $(\forall \varepsilon > 0)\ (\exists \delta > 0)\ (\forall x,\ a < x < a + \delta)\ f(x) \in U_\varepsilon(A)$\\2) (по Гейне) $(\forall \{x_n\}\subset (a,b), \lim\limits_{n\to\infty} x_n = a)\ \lim\limits_{n\to\infty}f(x_n) = A$.
+\end{definition}
+\begin{theorema}{(Связь предела и односторонних пределов)}{}
+    $\exists \lim\limits_{x\to a}f(x) = A \in\contr \cup \{\infty\} \Longleftrightarrow \mathmbox{\Leftrightarrow \exists \lim\limits_{x\to a - 0} f(x) = \lim\limits_{x\to a + 0} f(x) = A}$
+\end{theorema}
+\begin{definition}{}{}
+    Функция $f$ $(\forall x_1, x_2\in X, x_1 < x_2)$ \vspace*{0.3cm}
+
+    \hspace*{2cm} \footnotesize{называется \hspace{1cm} на $X$, если}
+\[	\text{\footnotesize монотонно} \left\{\begin{matrix}
+		\begin{aligned}
+			&\text{\footnotesize неубывающей} \hspace{2.05cm} f(x_1) \leq f(x_2)\\&\text{\footnotesize невозрастающей} \hspace{1.6cm} f(x_1) \geq f(x_2)\\
+			&\left.\begin{matrix}
+				\begin{aligned}
+					&\text{\footnotesize возрастающей} \hspace{1.5cm} &f(x_1) < f(x_2)\\ 
+					&\text{\footnotesize убывающей} \hspace{1.5cm} &f(x_1) > f(x_2)
+				\end{aligned}
+			\end{matrix}\right\} *
+		\end{aligned}
+	\end{matrix}\right.
+\]
+$* - \text{строго монотонно}$
+\end{definition}
+$\sup\limits_{x\in X} f(x) := \sup \{f(x):\ x\in X\}$
+
+$\inf\limits_{x\in X} f(x) := \inf \{f(x):\ x \in X\}$
+\begin{theorema}{(Существование пределов монотонной функции)}{}
+    Если
+    \begin{enumerate*}
+    \item  $f$ -- не убывает на $(a,b)\Longrightarrow \mathmbox{\Rightarrow \lim\limits_{x\to b - 0} f(x) = \sup\limits_{x\in (a,b)} f(x)}$
+    \item  $f$ -- не возрастает на $(a,b)\Longrightarrow \mathmbox{\Rightarrow \lim\limits_{x\to b - 0} f(x) = \inf\limits_{x\in (a,b)} f(x)}$
+    \item  $f$ -- не убывает на $(a,b)\Longrightarrow \mathmbox{\Rightarrow \lim\limits_{x\to a + 0} f(x) = \inf\limits_{x\in (a,b)} f(x)}$
+    \item $f$ -- не возрастает на $(a,b)\Longrightarrow \mathmbox{\Rightarrow \lim\limits_{x\to a + 0} f(x) = \sup\limits_{x\in (a,b)} f(x)}$
+    \end{enumerate*} 
+    
+\end{theorema}
+\Ex \begin{enumerate*}
+	\item $\lim\limits_{x\to 0} \dfrac{1}{x} = \infty$
+	\item $\lim\limits_{+0} \dfrac{1}{x} = + \infty, \lim\limits_{-0} \dfrac{1}{x} = -\infty$
+	\item $\lim\limits_{x\to1} \dfrac{x^2-1}{x-1}$
+	\item Функция Дирихле \[
+		f(x) = \begin{cases}
+			1,\ x \in\mathbb Q\\0,\ x\in \mathbb R\backslash\mathbb Q
+		\end{cases}
+	\] Эта функция не имеет предел ни в одной точке. Пусть $a\in\mathbb Q$. Тогда определим две последовательности Гейне\\ $x_n' = a + \dfrac{1}{n}\underset{n\to\infty}{\to} f(x_n') = 1,\ x_n'' = a + \dfrac{\sqrt{2}}{n} \underset{n\to\infty}{\to}\ f(x_n'') = 0 \Rightarrow$ предела в точке $a$ не существует. Если $a \in\mathbb R\backslash\mathbb Q$, то \\$x_n' = a + \dfrac{1}{n} \to a\ f(x_n') = 0$\\$|x_n''-a| < \dfrac{1}{10^n}\ f(x_n'') = 1 \Rightarrow $ предела в точке $a$ не существует.
+\end{enumerate*}
+\subsection*{Непрерывность}
+\begin{definition}{}{}
+     Пусть $f$ определена в некоторой окрестности $U_{\delta_0}(x_0),\ x_0\in\mathbb R.$ Если $\lim\limits_{x\to x_0} f(x) = f(x_0)$, то $f$ называется непрерывной в $x_0$.
+\end{definition}
+\begin{definition}{}{}
+     Пусть $f$ определена в $(a,x],\ (-\infty \leq a < x_0)$. Если $f(x_0 - 0) = f(x_0)$, то $f$ непрерывна слева в $x_0$.
+\end{definition}
+\begin{definition}{}{}
+     Пусть $f$ определена в $[x_0, b),\ (x_0 < b \leq +\infty)$. Если $f(x_0+0) = f(x_0)$, то $f$ непрерывна справа в $x_0$.
+\end{definition}
+\begin{definition}{}{}
+     Пусть $f$ определена в $\prokol$. Если $f$ не является непрерывной в $x_0$, то $x_0$ называется точкой разрыва функции $f$. 
+\end{definition}
+\begin{definition}{}{}
+     Если $x_0$ -- точка разрыва $f$ и $\exists$ конечные $f(x_0-0),\ f(x_0+0)$, то $x_0$ -- точка разрыва I-го рода. В противном случае -- II-го рода.
+\end{definition}
+\begin{definition}{}{}
+     Точка разрыва I-го рода называется точкой устранимого разрыва, если $f(x_0 - 0) = f(x_0 + 0)$. Точка разрыва II-го рода называется точкой бесконечного разрыва, если $\exists$ хотя бы один бесконечный $\lim\limits_{x\to x_0 - 0} f(x)$ или $\lim\limits_{x\to x_0 + 0} f(x)$.
+\end{definition}
+\Ex \begin{enumerate*}
+	\item  $f(x) = sign\ x.\ f(+0) = 1, f(-0) = -1$ -- точка разрыва первого рода. \item $f(x) = |sign\ x|.\ f(+0) = f(-0) = 1 \neq f(0) = 0$ -- устранимый разрыв
+	\item $f(x) = \dfrac{1}{x}\ f(+0) = +\infty,\ f(-0) = -\infty$ бесконечный разрыв
+	\item $f(x) = \sin\dfrac{1}{x}$ -- точка разрыва второго рода
+	\item Функция Дирихле -- разрывна в каждой точке
+	\item Функция Римана \[
+		\begin{cases}
+			&\dfrac{1}{n}, \ \text{ если $x = \dfrac{m}{n}$ и $n$ -- наименьшая из возможных. $m\in\mathbb Z,\ n\in\mathbb N$}\\&0,\ \text{ если $x \in\mathbb R \backslash \mathbb Q$}
+		\end{cases}
+	\]
+Пусть $x_0 \in \mathbb R\backslash\mathbb Q.$ Тогда $\lim\limits_{x\to x_0} f(x) = f(x_0) = 0\ (\forall \varepsilon > 0)\ (\exists \delta = \min\{|x_0 - \dfrac{[nx_0]}{n}|, |x_0 - \dfrac{[nx_0] \pm 1}{n}|:\ \dfrac{1}{n} \geq \varepsilon\})$ -- непрерывна во всех иррациональных точках.
+\end{enumerate*}
+\begin{theorema}{}{}
+Пусть $f$ определена в некоторой окрестности $U_{\delta_0}(x_0)$. Следующие утверждения эквивалентны: \begin{enumerate*}
+		\item $f$ непрерывна в $x_0$
+		\item $(\forall \varepsilon > 0)\ (\exists \delta > 0)\ (\forall x,\ |x-x_0| < \delta)\ |f(x) - f(x_0)| < \varepsilon$
+		\item $(\forall \{x_n\}\subset \mathscr{D}(f),\ \lim\limits_{n\to\infty} x_n = x_0,\ \lim\limits_{n\to\infty} f(x_n) = f(x_0)$.
+\end{enumerate*}
+\end{theorema}
+\cons из свойств предела функции.\begin{enumerate*}
+		\item (ограниченность) Если $f$ непрерывна в $x_0$, то $(\exists \delta)\ (\exists M)\ (\forall x, |x- x_0 | < \delta)\ |f(x)|\leq M$
+		\item (отделимость от нуля) Если $f$ непрерывна в $x_0, f(x_0) \neq 0$, то $(\exists \delta > 0)\ (\forall x, |x -x_0| < \delta )\ |f(x)| > \dfrac{|f(x_0)|}{2}$ и $sign\ f(x) = sign\ f(x_0)$
+		\item (арифметические) Если $f,g$ непрерывны в $x_0$, то $f\pm g, f \cdot g$ и $(\text{для } g(x_0) \neq 0)$ $\dfrac{f}{g}$ непрерывны в $x_0$.
+\end{enumerate*}
+\begin{theorema}{(Переход к пределу в сложной функции)}{} Если $\lim\limits_{x\to x_0(\pm 0)} f(x) = a$ и $g$ непрерывна в $a$, то $\lim\limits_{x\to x_0(\pm 0)}g(f(x)) = g(a)$
+\end{theorema}
+
+\cons (Непрерывность сложной функции) Если $f$ непрерывна в $x_0$, а $g$ непрерывна в $f(x_0)$, то $g\circ f$ непрерывна в $x_0$
+
+\begin{note}{}{} 
+    Из $\lim\limits_{x\to x_0} f(x) = a,\ \lim\limits_{y\to a} g(y) = b$, вообще говоря не следует, что $\lim\limits_{x\to x_0} g(f(x)) = b$. Последнее равенство справедливо, если $f(x) \neq a$ для $x \in \overset{\circ}{U}_{\delta_0},\ \delta_0 > 0$
+\end{note}
+\begin{theorema}{(О точках разрыва монотонной функции)}{} 
+    Если $f$ монотонна на $(a,b)\ (-\infty \leq a < b \leq +\infty)$, то она может иметь на $(a,b)$ не более чем счетное множество точек разрыва. Все эти точки разрыва (если есть) -- точки разрыва первого рода, причем неустранимого.
+\end{theorema}
+\begin{definition}{}{}$f$ называется непрерывной на множестве $X$, если $(\forall x_0\in X)\ (\forall \varepsilon > 0)\ (\forall \delta > 0)\ (\forall x \in X,\ |x - x_0| < \delta)\ |f(x) - f(x_0)| < \varepsilon$
+\end{definition}
+\begin{theorema}{(Первая теорема Вейерштрасса о непрерывных на отрезках функциях)}{}
+     Если $f$ непрерывна на $[a,b]$, то $f$ ограничена на $[a,b]$
+\end{theorema}
+\begin{theorema}{(Вторая теорема Вейерштрасса о непрерывных на отрезках функциях)}{} 
+    Если $f$ непрерывна на $[a,b]$, то $(\exists x', x''\in [a,b]), \ f(x') - \sup\limits_{x\in [a,b]}f(x),\ f(x'') = \inf\limits_{x\in[a,b]} f(x)$
+\end{theorema}
+\begin{theorema}{(Больцано-Коши о промежуточных значениях)}{}
+ Пусть $f$ непрерывна на $[a,b]$. $\forall c = f(x_1) < d = f(x_2),\ x_1,x_2\in [a,b],\ (\forall e \in (c,d))\ (\exists \gamma \in [a,b])\ f(\gamma) = e.$
+\end{theorema}
+\begin{definition}{}{} $I \subset \mathbb R$ называется промежутком, если $\forall \{x_1 < x_2, x_1, x_2 \in I\}\ [x_1, x_2] \subset I.$ Если $I$ содержит хотя бы две точки, то $I$ -- невырожденный промежуток.
+\end{definition}
+\begin{lemma}{}{} 
+    1. $I$ -- невырожденный промежуток $\Leftrightarrow (\exists a < b,\ a, b \in \mathbb R):\ (I = (-\infty, +\infty)) \vee (I = (-\infty, b]) \vee (I = (-\infty, b)) \vee (I = [a, +\infty))\vee (I = (a, + \infty)) \vee (I = (a,b)) \vee (I = [a,b)) \vee (I = (a,b]) \vee (I = [a,b])$
+\end{lemma}
+\begin{lemma}{}{} Если $f$ непрерывна на промежутке $I$, то образ промежутка $f(I) = \{y:\ \exists x \in I,\ f(x) = y\}$ -- промежуток. В частности, если $I$ -- отрезок, то $f(I)$ -- тоже отрезок.
+\end{lemma}
+\begin{note}{}{}
+     Обратное, вообще говоря, неверно.
+\end{note}
+\Ex 
+\[
+	f(x) = \begin{cases}
+		x, \hspace{0.5cm} x\in\mathbb Q\\-x,\hspace{0.5cm} x \in\mathbb R\backslash \mathbb Q
+	\end{cases}
+\]
+$(f[-a,a]) = [a, -a]$ 
+\begin{lemma}{}{}
+     Пусть $f$ монотонна и непостоянна на промежутке $I$. Тогда $f$ непрерывна на $I$ тогда и только тогда, когда $I$ промежуток.
+\end{lemma}
+\begin{theorema}{(Об обратной функции)}{}
+    Если $f$ строго монотонна и непрерывна на промежутке $I$, то на промежутке $f(I)$ определена строго монотонна в  том же смысле, что и $f$, обратная функция $f^{-1}$, то есть $f^{-1}:\ f(I) \to I,\ (\forall x \in I)\ f^{-1}(f(x)) = x,\ (\forall y \in f(I))\ f(f^{-1}(y)) = y.$
+\end{theorema}
+\subsection*{Непрерывность элементарных функций}
+\begin{enumerate*}
+	\item $y = x^n,\ n$ -- нечетное, $n \in\mathbb N$. -- непрерывна, не ограничена. $y(\mathbb R) = \mathbb R$. $y^{-1} = \sqrt[n]{x},\ x\in\mathbb R.$
+	\item $y = x^n, \ n$ -- четное, $n \in\mathbb N\ \mathscr{D}(y) = [0, +\infty),\ y([0,+\infty)) = [0, +\infty),\ y^{-1} = \sqrt[n]{x},\ x\geq 0$. \\$x^{\dfrac{m}{n}} := (\sqrt[]{x})^m,\ x > 0,\ m\in\mathbb Z,\ n\in\mathbb N.$ 
+	\item $y = \sin(x)$. Непрерывность \[
+        |\sin x - \sin a| = 2|\sin \dfrac{x-a}{2}\cdot \cos \dfrac{x+a}{2}| \leq |x-a| < \varepsilon
+    \]
+    $y = \cos (x)$. Непрерывность: \[
+        |\cos x - \cos a| = 2|\sin \dfrac{x-a}{2}\cdot \sin \dfrac{x+a}{2}|
+        \] Применяя теорему о частном $\tg, \ctg$ -- непрерывны. Применяя теорему об обратной функции $\arccos, \arcsin, \arctan\ldots$ -- непрерывны.
+\end{enumerate*}
+\begin{theorema}{(Первый замечательный предел)}{}
+    \[
+        \lim\limits_{x\to 0} \dfrac{\sin x}{x}
+    \]
+\end{theorema}
+\begin{enumerate*}
+	\setcounter{enumi}{3}
+	\item $a^x := \lim\limits_{n\to \infty} a^{(x)_n},\hspace{0.5cm} (a > 1)$.\\ Пусть $x>0,\ (x)_n = \dfrac{[10^nx]}{10^n}$. $\{(x_n)\}$ -- неубывающая последовательность, тогда $\{a^{(x)_n}\}$ -- неубывающая. $(x)_n \leq [x] + 1 \Rightarrow a^{(x)_n} \leq a^{[x] + 1}$\\$x < 0,\ a:= \dfrac{1}{a^{-x}}$.\\
+	$y = a^x,\ x\in\mathbb R$ $x_1 < x_2 \overset{?}{\Rightarrow} a^{x_1} < a^{x_2}$\\$(x_1)_n \leq x_1 < (x_2)_n \leq x_2$. По теореме о плотности рациональных чисел: $\exists r \in \mathbb Q\ x_1 < r_1 < r_2 < x_2$. Тогда по свойствам степеней с рациональными показателями: $a^{(x_1)_n} < a^{r_1} < a^{r_2} < a^{(x_2)_n}$. Переходя к пределу в неравенствах: $a^{x_1} \leq a^{r_1} < a^{r_2} \leq a^{x_2}$.
+\end{enumerate*}
+\begin{lemma}{}{}
+    $\lim\limits_{n\to\infty} \sqrt[n]{a} = 1,\ a > 0$.
+\end{lemma}
+\begin{lemma}{}{}
+    $(\forall \{r_n\}\subset \mathbb Q,\ \lim\limits_{n\to\infty} r_n = x)\ \lim\limits_{n\to \infty} a^{r_n} = a^x$
+\end{lemma}
+\begin{theorema}{}{}
+    Функция $y = a^x$ непрерывна на $(-\infty, + \infty),\ (a > 0)$
+\end{theorema}
+\cons {Если $(0 < a < 1) \vee (a> 1)$, то $\exists$ обратная функция $y = \log_a x$, непрерывная на $(0, +\infty)$}
+\begin{theorema}{(Второй замечательный предел)}{}
+    $\lim\limits_{x\to 0} (1+x)^{1/x} = e$
+\end{theorema}
+\cons \begin{enumerate*}
+		\item $\lim\limits_{x\to \infty} (1 + \dfrac{1}{x})^x = e$
+		\item $\lim\limits_{x\to 0} \dfrac{a^x - 1}{x} = \ln a$
+		\item $\lim\limits_{x\to 0} \dfrac{\log_a(x + 1)}{x} = \dfrac{1}{\ln a}$
+\end{enumerate*}
+
+    \section{Элементы общей топологии. Непрерывные отображения. Компактность, связность, хаусдорфовость.}
+    \begin{definition}{}{}
+        Метрическим пространством называется множество $X$ такое, что для любых $x, y \in X$ определено действительное число $\rho(x, y)$ (метрическое расстояние) и верны следующие утверждения:
+        \begin{enumerate*}
+            \item $\forall x, y \in X\ \ \rho(x, y) \ge 0$, причём $\rho(x, y) = 0 \lra x = y$
+            
+            \item $\forall x, y \in X\ \ \rho(x, y) = \rho(y, x)$
+            
+            \item $\forall x, y, z \in X\ \ \rho(x, y) \le \rho(x, z) + \rho(z, y)$
+        \end{enumerate*}
+    \end{definition}
+    
+    \begin{theorema}{}{}
+        Каждое линейное нормированное множество (над $\R(\C)$) является метрическим пространством с метрикой, индуцированной нормой по формуле:
+        \[
+            \rho(x, y) = ||x - y||
+        \]
+    \end{theorema}
+    
+    
+    \cons
+        $\R^n$ и $\C^n$ - метрические пространства с метрикой
+        \[
+        \rho(\vec{x}, \vec{y}) = ||\vec{x} - \vec{y}||
+        \]
+    
+    
+    \begin{proposition}{}{}
+        Любое множество является метрическим пространством
+    \end{proposition}
+    
+    
+    \begin{note}{}{}
+        Дальнейшие определения даны для метрического пространства $X$. В качестве примера удобно брать $X = \R^2$.
+    \end{note}
+    
+    \begin{definition}{}{}
+        \textit{Открытым шаром} с центром в точке $x_0 \in X$ радиусом $\eps > 0$ (или же $\eps$-окрестностью точки $x_0$) называется множество
+        \[
+            U_\eps(x_0) = \{x \in X : \  \rho(x, x_0) < \eps\}
+        \]
+    \end{definition}
+    
+    \begin{definition}{}{}
+        Точка $x_0$ называется \textit{внутренней точкой} множества $A \subset X$, если она принадлежит $A$ вместе с некоторой своей $\eps$-окрестностью:
+        \[
+            U_\eps(x_0) \subset A
+        \]
+    \end{definition}
+    \begin{definition}{}{}
+        \textit{Внутренностью} множества $A$ называется множество всех внутренних точек множества $A$. Обозначается как
+        \[
+            \Int A,\ A
+        \]
+        От слова interior.
+    \end{definition}
+    
+    \begin{definition}{}{}
+        Множество $A \subset X$ называется \textit{открытым}, если все его точки - внутренние, то есть $A \subset \Int A$. Естественно, $\emptyset$ - открытое множество.
+    \end{definition}
+    
+    \begin{definition}{}{}
+        Точка $x_0$ называется \textit{точкой прикосновения} множества $A \subset X$, если
+        \[
+            \forall \eps > 0\ U_\eps(x_0) \cap A \neq \emptyset
+        \]
+    \end{definition}
+    
+    \begin{definition}{}{}
+        Множество всех точек прикосновения множества $A \subset X$ называется его \textit{замыканием} и обозначается как
+        \[
+            \cl A,\ \bar{A}
+        \]
+    \end{definition}
+    
+    \begin{definition}{}{}
+        Множество $A \subset X$ называется \textit{замкнутым}, если оно содержит все свои точки прикосновения, то есть $A \supset \cl A$. Естественно, $\emptyset$ - замкнутое множество
+    \end{definition}
+    
+    \begin{definition}{}{}
+        \textit{Замкнутым шаром} с центром в точке $x_0 \in X$ и радиусом $\eps > 0$ называется
+        \[
+            \bar{B}_\eps(x_0) = \{x \in X : \  \rho(x_0, x) \le \eps\}
+        \] 
+    \end{definition}
+    
+    \begin{lemma}{}{}
+        Для любого $A \subset X$ верно, что
+        \[
+            \Int A \subset A \subset \cl A
+        \]
+    \end{lemma}
+    
+   
+    
+    \cons
+        $A$ - открытое множество $\lra \Int A = A$
+        
+        $A$ - замкнутое множество $\lra \cl A = A$ 
+    
+    
+    \begin{lemma}{}{}
+        $\forall A_1 \subset A_2 \subset X$ верно, что
+        \begin{align*}
+            &\Int A_1 \subset \Int A_2
+            \\
+            &\cl A_1 \subset \cl A_2
+        \end{align*}
+    \end{lemma}
+       
+    \begin{lemma}{}{}
+        Открытый шар является открытым множеством.
+    \end{lemma}
+    
+ 
+    \begin{lemma}{}{}
+        Замкнутый шар является замкнутым множеством.
+    \end{lemma}
+
+    \begin{theorema}{}{}
+        \begin{enumerate*}
+            \item Внутренность любого множества $A \subset X$ открыта.
+            
+            \item Замыкание любого множества $A \subset X$ замкнуто.
+        \end{enumerate*}
+    \end{theorema}
+    
+    \begin{lemma}{}{}
+        Для любого $A \subset X$ верны равенства
+        \begin{itemize}
+            \item $X \bs \Int A = \cl(X \bs A)$
+            
+            \item $X \bs \cl A = \Int(X \bs A)$
+        \end{itemize}
+    \end{lemma}
+    
+
+    \cons $A \subset X$ - открытое множество тогда и только тогда, когда $X \bs A$ - замкнутое.
+
+    \begin{definition}{}{}
+        Внутренняя точка дополнения множества $A \subset X$ называется \textit{внешней точкой}.
+    \end{definition}
+    \begin{definition}{}{}
+        \textit{Границей} множества $A \subset X$ называется множество
+        \[
+            \vdelta A = \cl A \bs \Int A
+        \]
+        Все точки $\vdelta A$ называются \textit{граничными} точками множества $A$.
+    \end{definition}
+    \begin{lemma}{}{}
+        $x_0 \in \vdelta A \lra \left(\forall \eps > 0\ \ U_\eps(x_0) \cap A \neq \emptyset,\ U_\eps(x_0) \cap (X \bs A) \neq \emptyset\right)$
+    \end{lemma}
+    \begin{theorema}{(Основное свойство совокупности открытых множеств)}{}
+        Пусть $X$ - метрическое пространство. Тогда совокупность $\Tau$ открытых подмножеств $X$ обладает следующими свойствами:
+        \begin{enumerate*}
+            \item $\emptyset \in \Tau$, $X \in \Tau$
+            
+            \item $\forall G_1, G_2 \in \Tau \Rightarrow G_1 \cap G_2 \in \Tau$
+            
+            \item $\forall \{G_\alpha\}_{\alpha \in A} \subset \Tau \Rightarrow \bigcup\limits_{\alpha \in A} G_\alpha \in \Tau$, где $A$ является некоторым множеством индексов
+        \end{enumerate*}
+    \end{theorema}
+    
+    \begin{note}{}{}
+        Под \textit{совокупностью} множеств подразумевается множество всех множеств, обладающих указанным свойством (в данном случае - множество всех открытых множеств).
+    \end{note}
+    
+
+    
+    \begin{definition}{}{}
+        Множество $X$ называется \textit{топологическим пространством}, если в нём выделена система подмножеств $\Tau$, называемых \textit{открытыми}, которая удовлетворяет свойствам из теоремы.
+        
+        Множество $\Tau$ называется \textit{топологией} множества $X$.
+    \end{definition}
+    
+    \begin{definition}{}{}
+        Пусть $X$ - топологическое пространство с топологией $\Tau$. Тогда $x_0$ называется пределом последовательности $\{x_n\}_{n = 1}^\infty \subset X$, если
+        \[
+            (\forall G \in \Tau, x_0 \in G)\ \exists N \in \N : \  \forall n > N\ x_n \in G
+        \]
+        Предел обозначается как
+        \[
+            \liml_{n \to \infty} x_n = x_0
+        \]
+    \end{definition}
+
+    \begin{note}{}{}
+        Чтобы обеспечить единственность предела, достаточно добавить свойство \textit{хаусдорфовости}:
+        \[
+            \forall x, y \in X\ \exists G_x, G_y \in \Tau : \  (x \in G_x) \wedge (y \in G_y) \wedge (G_x \cap G_y = \emptyset)
+        \]
+        Такое топологическое пространство называется \textit{хаусдорфовым}.
+    \end{note}
+
+    \begin{definition}{}{}
+        \textit{Компактным множеством в метрическом пространстве} $X$ называется такое множество $K$, что из любого его открытого покрытия множествами с индексами из $A$ можно выделить конечное подпокрытие:
+        \[
+            \exists \{\alpha_1, \ldots, \alpha_n\} \subset A :\  \bigcup_{i = 1}^n G_{\alpha_i} \supset K
+        \]
+    \end{definition}
+    
+    \begin{theorema}{}{}
+        Любое компактное множество замкнуто
+    \end{theorema}
+    
+    \begin{theorema}{}{}
+        Каждое замкнутое подмножество компактного множества компактно.
+    \end{theorema}
+    
+    
+    \begin{definition}{}{}
+        $n$-мерным кубом назовём декартово произведение отрезков, каждый из которых имеет длину $d$:
+        \[
+            I = \prodl_{j = 1}^n [a^{(j)}; b^{(j)}] :\  \forall j \in \range{n}\ \ b^{(j)} - a^{(j)} = d
+        \]
+    \end{definition}
+    
+    \begin{theorema}{}{}
+        $n$-мерный куб компактен.
+    \end{theorema}
+    
+    \cons    При $n = 1$ получается утверждение, что из любого покрытия отрезка $[a; b]$ открытыми множествами можно выделить конечное подпокрытие. Это утверждение также известно как \textit{теорема Гейне-Бореля}
+    
+    \begin{theorema}{(Критерий компактности в $\R^n$)}{}
+        В пространстве $\R^n$ следующие утверждения эквивалентны:
+        \begin{enumerate}
+            \item $K$ - ограниченное замкнутое множество
+            
+            \item $K$ - компактное множество
+            
+            \item \(\forall \{\vec{x}_n\}_{n = 1}^\infty \subset K\ \ \exists \left(\{\vec{x}_{m_k}\}_{k = 1}^\infty,\ \liml_{k \to \infty} \vec{x}_{m_k} = \vec{x}_0 \in K \right)\)
+        \end{enumerate}
+    \end{theorema}
+    
+    \begin{note}{}{}
+        Утверждения 2 и 3 эквивалентны в любом метрическом пространстве, а вот эквивалентность с 1м - специфично для $\R^n$
+    \end{note}
+    \section{Ряды. Числовые и функциональные ряды. Признаки сходимости (Даламбера, Коши,
+    интегральный, Лейбница). Абсолютно и условно сходящиеся ряды.}
+
+    \section{Дифференцирование. Дифференцирование функций. Применение производной для
+    нахождения экстремумов функций. Формула Тейлора.}
+    \begin{definition}{}{} 
+        Пусть $f$ определена в некоторой окрестности точки $a\in \mathbb R$. Приращением функции $f$, отвечающим приращению аргумента $\delta x$ в точка $a$, называется $\Delta y = f(a + \Delta x) - f(a)(=\Delta f)$. Производной функции $y = f(x)$ в точке $a$ называется конечный предел:
+        \[
+            \lim\limits_{\Delta x\to 0} \dfrac{\Delta y}{\Delta x} = \lim\limits_{\Delta x\to 0} \dfrac{f(a + \Delta x) - f(a)}{\Delta x} = f'(a),
+        \]
+             если он существует. 
+    \end{definition}
+    \begin{theorema}{}{}
+        Если $\exists f'(a)$, то $f$ непрерывна в точке $a$.
+    \end{theorema}
+    \begin{note}{}{} 
+        Обратное, вообще говоря, неверно.
+    \end{note}
+    
+    \Ex $f(x) = |x|,\ a = 0$. Не существует предела, так как 
+    \[
+        \lim\limits_{\Delta x \to +0} \dfrac{f(\Delta x)}{\Delta x} = 1,\ \lim\limits_{\Delta x \to -0}\dfrac{f(\Delta x)}{\Delta x} = -1
+    \]
+    \begin{theorema}{(Арифметические операции с производными)}{} 
+        Если $\exists f'(x_0)$ и  $g'(x_0)$, то $\exists$ в точке $x_0$ у $f\pm g,\ f\cdot g$ и (в случае $g(x_0) \neq 0$) $\dfrac{1}{g}$, причем 
+        \begin{enumerate*}
+            \item \[(f\pm g)'(x_0) = f'(x_0) \pm g'(x_0)\]
+            \item \[(f\cdot g)'(x_0) = f'(x_0)\cdot g(x_0) + f(x_0)g'(x_0)\]
+            \item \[(\dfrac{f}{g})'(x_0) = \dfrac{f'(x_0)g(x_0) - f(x_0)g'(x_0)}{g^2(x_0)}\]
+        \end{enumerate*}
+    \end{theorema}
+    \begin{theorema}{(Производные основных элементарных функций)}{} 
+        Справедливые следующие формулы:
+        \begin{align*}
+            &(\sin x)' = \cos x &(\sinh x)' = \cosh x\\ 
+            &(\cos x)' = -\sin x &(\cosh x)' = \sinh x\\
+            &(\tan x)' = \dfrac{1}{\cos^2 x} = \sec^2x &(\tanh x)' = \dfrac{1}{\cosh^2 x} \\
+            &(\cot x)' = -\dfrac{1}{\sin^2x} = -\csc^2x &(\coth x)' = -\dfrac{1}{\sinh^2 x}\\
+            &(x^a)' = ax^{a-1}\\&(a^x)' = a^x\ln a
+        \end{align*}
+    \end{theorema}
+    \begin{theorema}{(Производная обратной функции)}{} Пусть $y = f(x)$ непрерывна и строго монотонна на отрезке $[x_0 - \delta , x_0 + \delta],\ \delta > 0$. Если $\exists f'(x) \neq 0$, то обратная функция $x = \varphi(y) = f^{-1}(y)$ имеет производную в $y_0 = f(x_0)$, равную \[
+            \varphi'(y_0) = \dfrac{1}{f'(x_0)}
+    \]
+    \end{theorema}
+    \begin{proposition}{}{}
+        Справедливы формулы:
+        \begin{align*}
+            &(\arcsin x)' = \dfrac{1}{\sqrt{1-x^2}},\ |x < 1| \\&(\arccos x)' = -\dfrac{1}{\sqrt{1-x^2}},\ |x < 1|\\&(\arctg x)' = \dfrac{1}{1+x^2}\\&(\arcctg x)' = -\dfrac{1}{1+x^2}\\&(\log_a x)' = \dfrac{1}{x\ln a},\ x > 0,\ a > 0,\ a\neq 1
+        \end{align*}
+    \end{proposition}
+    \begin{note}{}{} Требование непрерывности в теореме 4  существенно.
+    \end{note}
+    \subsection*{Дифференцируемость}
+    \begin{definition}{}{} Пусть $f$ определена в некоторой окрестности точки $a$. Если приращение $\Delta y$ функции $f$ в точке $a$, отвечающее приращению аргумента $\Delta x$, может быть записано в виде $\Delta y = A\Delta x + o(\Delta x),\ \Delta x \to 0,\ A\in\mathbb R$, то $f$ называется дифференцируемой в точке $a$, а выражение $A\Delta x$ называется дифференциалом функции $f$ в точке $a$ (Обозначение: $dy = df = A\Delta x$)
+    \end{definition}
+    \begin{theorema}{(Дифференцируемость и производная)}{} 
+            Пусть $f$ определена в некоторой окрестности точки $a$. $f$ -- дифференцируема в $a$ тогда и только тогда, когда $\exists f'(a) \in\mathbb R$
+    \end{theorema}
+    \begin{proposition}{}{}
+        \begin{enumerate*}
+            \item Если $f$ дифференцируема в точке $a$, то $f$ непрерывна в точке $a$
+            \item Если $f,g$ дифференцируемы в точке $a$, то $f\pm g,\ f\cdot g$, и (для $g(a) \neq 0)\ \dfrac{f}{g}$ дифференцируемы в $a$, причем \begin{align*}
+                &d(f\pm g)\big|_a = df\big|_a \pm dg\big|_a\\
+                &d(f\cdot g)\big|_a = g(a)df\big|_a + f(a)dg\big|_a\\
+                &d(\dfrac{f}{g}) = \dfrac{g(a)df\big|_a - f(a)dg\big|_a}{g^(a)}
+            \end{align*}
+        \end{enumerate*} 
+    \end{proposition}
+    \begin{theorema}{(Дифференцируемость сложной функции)}{}
+         Если $y = g(x)$ дифференцируема в точке $a$, $f$ дифференцируема в точке $b = y(a)$, то $h = f \circ g$ дифференцируема в точке $a$, причем $h'(a) = f'(b)g'(a) = f'(g(a))g'(a)$
+    \end{theorema}
+    \begin{definition}{}{} 
+        В определении дифференциала $dy = f'(x_0)\Delta x$ приращение независимого аргумента называется его дифференциалом ($dx = \Delta x$)
+    \end{definition}
+    \begin{proposition}{}{}
+            (Инвариантность формы первого дифференциала) Формула $dy = f'(x)dx$ для дифференциала функции $y = f(x)$ в точке $x$ справедлива как в случае независимой переменной $x$, так и в случае, когда $x$ является дифференцируемой функцией.
+    \end{proposition}
+    \begin{proposition}{}{}
+         Если функция $y(x)$ задана параметрически $(x = \varphi(t), y = \psi(t), \varphi, \psi \text{ дифференцируемы на } (a,b),\ \\ \varphi \text{ строго монотонна на } $(a,b)$ \text{ и } \varphi'(t) \neq 0,\ t\in (a,b))$, то она дифференцируема, причем $y'(x) = \dfrac{\psi'(t)}{\varphi'(t)}$, где $x = \varphi(t),\ t \in (a,b)$.
+    \end{proposition}
+    \Ex (функция, заданная параметрически)
+        \begin{align*}
+        &x = \cos t\\&y = \sin t\\&0 \leq t < 2\pi
+        \end{align*}
+    \begin{definition}{}{}
+         Графиком функции $f:\ X \to \mathbb R$ называется множество точек $\{(x, y):\ x \in X,\ y = f(x)\}$. Секущей к графику функции $f:\ (x_0 -\delta, x_0 + \delta) \to \mathbb R$ называется прямая, проходящая через точки $(x_0, f(x_0))$ и $(x_0 + \Delta x, f(x_0+\Delta x))$, где $0 < |\Delta x| < \delta$. Ее угловой коэффициент $k_{\text{ сек }} = \dfrac{f(x_0+\Delta x) - f(x_0)}{\Delta x} = \dfrac{\Delta y}{\Delta x}$. Если $\exists k_{\text{кас}} := \lim\limits_{\Delta x \to 0} k_{\text{сек}} \in \overline{\mathbb R}$, то прямая, проходящая через точку $(x_0, f(x_0))$ с угловым коэффициентом $k_{\text{кас}}$, называется касательной к графику функции $y = f(x)$ в точке $(x_0, f(x_0))$.
+    \end{definition}
+    \begin{definition}{}{} 
+        Если $f$ непрерывно в точке $x_0$ и $\exists \lim\limits_{\Delta x \to 0} \dfrac{\Delta y}{\Delta x} \in \overline{\mathbb R}\backslash\mathbb R(\pm \infty)$, то говорят, что $f$ имеет бесконечную производную в точке $x_0$.
+    \end{definition}
+    \begin{theorema}{(Геометрический смысл производной)}{}
+         Пусть $f:\ (x_0 -\delta , x_0 + \delta) \to \mathbb R$ непрерывна в точке $x_0$. График $f$ имеет касательную в точке $(x_0, f(x_0))$ тогда и только тогда, когда $\exists$ конечная или бесконечная производная $f'(x_0)$.
+    \end{theorema}
+    \begin{note}{}{} 
+        Дифференциал -- приращение ординаты касательной, отвечающее приращению аргумента $\Delta x$.
+    \end{note}
+    \begin{definition}{}{} $\lim\limits_{\Delta x \to +0} \dfrac{\Delta y}{\Delta x}$ (если $\exists$) называется правой производной $f'_+(x_0)$
+    \\$\lim\limits_{\Delta x \to -0} \dfrac{\Delta y}{\Delta x}$ (если $\exists$) называется левой производной $f'_-(x_0)$
+    \\Если в определении дифференцируемости $\Delta x \to + 0 (-0)$, то имеем  дифференцируемость справа(слева).
+    \end{definition}
+    \subsection*{Производные и дифференциалы высших порядков}
+    \begin{definition}{}{}
+         $f^{(0)} := f,\ f^{(1)} := f'$. По индукции, если $f^{(n-1)}$ дифференцируема в точке $x_0$, то $f^{(n)} (x_0) := (f^{(n-1)})'(x_0)$. Если $\exists f^{(n)}(x_0) \in\mathbb R$, то $f\ n $ раз дифференцируема в точке $x_0$.
+    \end{definition}
+    \begin{definition}{}{} 
+        $0! = 1,\ 1!  = 1,\ n! = (n-1)!n,\ n\in\mathbb N\\C_n^k = \binom{n}{k} := \dfrac{n!}{k!(n-k)!}$
+    \end{definition}
+    \begin{lemma}{}{}
+         $\forall n \in\mathbb N,\ \forall k, \ 1 \leq k \leq n,\ C_n^k + C_n^{k-1} = C_{n+1}^k$
+    \end{lemma}
+    Треугольник Паскаля:
+    \begin{center}
+        \newcommand{\ap}{\ensuremath{\swarrow\,\searrow}}
+        \setlength{\tabcolsep}{0pt}
+        \begin{tabular}[h]{ccccccccc}
+            &     &     &      & $C_0^0$   &      &      &     & \\
+            &     &     &      & \ap &      &      &     & \\
+            &     &     & $C_1^0$    &     &  $C_1^1$   &      &     & \\
+            &     &     & \ap  &     &  \ap &      &     & \\
+            &     & $C_2^0$   &      & $C_2^1$   &      & $C_2^2$    &     & \\
+            &     & \ap &      & \ap &      & \ap  &     & \\
+            & $C_3^0$   &     & $C_3^1$    &     &  $C_3^2$   &      & $C_3^3$   & \\
+            &\ap  &     & \ap  &     &  \ap &      & \ap & \\
+            $C_4^0$ &     & $C_4^1$   &      & $C_4^2$   &      & $C_4^3$    &     & $C_4^4$\\\ldots&\ldots&\ldots&\ldots&\ldots&\ldots&\ldots&\ldots
+        \end{tabular} \vspace*{0.3cm}
+
+        \begin{tabular}{ccccccccc}
+            &     &     &      & 1   &      &      &     & \\
+            &     &     &      & \ap &      &      &     & \\
+            &     &     & 1    &     &  1   &      &     & \\
+            &     &     & \ap  &     &  \ap &      &     & \\
+            &     & 1   &      & 2   &      & 1    &     & \\
+            &     & \ap &      & \ap &      & \ap  &     & \\
+            & 1   &     & 3    &     &  3   &      & 1   & \\
+            &\ap  &     & \ap  &     &  \ap &      & \ap & \\
+            1 &     & 4   &      & 6   &      & 4    &     & 1\\\ldots&\ldots&\ldots&\ldots&\ldots&\ldots&\ldots&\ldots
+        \end{tabular}
+    \end{center}
+    \begin{theorema}{(Правило Лейбница)}{} Если $u, v$ $n$ раз дифференцируема в точке $x$, то $u\cdot v$ $n$ раз дифференцируема в $x$, причем $(uv)^{(n)} = \sum\limits_{k=0}^n C_n^ku^{(k)v^{(n-k)}}$
+    \end{theorema}
+    \begin{theorema}{(Производные $n$-го порядка элементарных функций)}{} 
+        \[\arraycolsep=1.4pt\def\arraystretch{1.7}
+            \begin{array}{l}
+                (a^x)^{(n)} = a^x \ln^n a\\
+                (\sin x)^{(n)} = \sin(x+\dfrac{\pi n}{2})\\
+                (\cos x)^{(n)} = \cos(x+\dfrac{\pi n}{2})\\
+                (x^a)^{(n)} = a\cdot (a-1)\ldots (a-n+1)\cdot x^{a-n},\ \\
+                \hfill (a\notin \mathbb N) \vee (a\in\mathbb N, \ a \geq n)\\
+                (\ln(1+x))^{(n)} = (-1)^{n+1}(n-1)!(1+x)^{-1},\ n\in\mathbb N
+        \end{array}
+    \]
+\end{theorema}
+    \cons Бином Ньютона: \[(a+b)^n = \sum\limits_{k=0}^n C_n^ka^kb^{n-k},\ n\in\mathbb N\]
+    \begin{proposition}{}{} Для бинома Ньютона\[
+            \sum\limits_{k=0}^n C_n^k \cos^k\alpha \cdot i^{n-k}\sin^{n-k}\alpha = \cos n\alpha + i\sin n\alpha
+    \]положим $\alpha = \arccos x,\ x\in [-1.1]$. Тогда $\cos(\arccos x) = x,\ \sin(\arccos x) = \sqrt{1-x^2}.$ Имеем
+    \[
+        \begin{array}{c}
+            \sum\limits_{k=0}^n C_n^kx^ki^{n-k}(\sqrt{1-x^2})^{n-k} = \\ = \cos(n\arccos x) + i\sin(n\arccos x)            
+        \end{array}
+    \]
+    Выражение вида:\[
+        T_n(x) = \cos(n\arccos x)
+    \] называется многочленом Чебышёва 1-го порядка, а выражение\[
+    U_{n-1}(x) = \dfrac{\sin(\arccos x)}{\sqrt{1-x^2}}
+    \] многочленом Чебышёва 2-го рода.
+\end{proposition}
+    \cons $\lim\limits_{n \to \infty} \dfrac{n^k}{a^n} = 0,\ a > 1$
+    \begin{definition}{}{} 
+        Дифференциалом $n$-го порядка функции $y = f(x)$ в точке $x$ называется $d^nf(x) = d(d^{n-1}f)(x)$, причем при каждом выражении дифференциала $\Delta x$ (приращение независимой переменной) считается постоянным, причем одним и тем же в каждом взятии дифференциала.
+    \end{definition}
+    \begin{note}{}{}
+        Если $f$ $n$ раз дифференцируема в точке $x_0$, то $\exists$ дифференциал $n$-го порядка в точке $x_0$, равный $d^nf(x_0) = f^{(n)}(x_0)dx^n$
+    \end{note}
+    \begin{theorema}{(Формула Фаа-ди-Бруно)}{}
+     Если $x = \varphi(t)\ n$ раз дифференцируема в точке $t_0$, $y = f(x)\ n$ раз дифференцируема в точке $x_0 = \varphi(t_0)$, то сложная функция $y = h(t) = f(\varphi(t))\ n$ раз дифференцируема в $t_0$, причем \[
+            h^{(n)} (t_0) = \sum\limits_{\pi \in\Pi} f^{(|\pi|)}(x_0)\prod\limits_{B \in \pi}\varphi^{(|B|)}(t_0),
+    \] где $\Pi$ -- множество разбиений $\{1,2,\ldots, n\},\ |B|, |\Pi|$ -- число элементов в $B, \pi$ соответственно.
+    \end{theorema}
+
+    \subsection*{Формула Тейлора}
+    \begin{lemma}{}{}
+        Если $f$ $n$ раз дифференцируема в точке $x_0$, то $\exists !$ многочлен степени $\leq n\ P_n(f,x)$, такой, что $f(x_0) = P_n(f,x_0),\ f'(x_0) = P_n'(f,x_0)\ldots f^{(n)} (x_0) = P^{(n)}_n(f,x_0)$. Этот многочлен имеет вид \[
+            P_n(f,x) = f(x_0) + \dfrac{f'(x_0)}{1!}(x-x_0) + \dfrac{f''(x_0)}{2!}(x-x_0)^2 + \ldots + \dfrac{f^{(n)(x_0)}}{n!} (x-x_0)^n
+        \] и называется многочленом Тейлора степени $n$ относительно $x_0$.
+    \end{lemma}
+    \begin{lemma}{}{}
+        Если $\varphi $ и $\psi\ (n+1)$ раз дифференцируемы в $U_\delta(x_0),\\ \varphi(x_0) = \varphi'(x_0) = \ldots = \varphi^{(n)}(x_0) = 0,\ \psi(x_0) = \psi'(x_0) = \ldots = \psi^{(n)} (x_0) = 0$, но $\psi'(x) \neq 0, \ \psi''(x) \neq 0, \ldots, \psi^{(n+1)}(x) \neq 0,\ \forall x \in \overset{\circ}{U}_\delta(x_0)$, то $(\forall x \in U_\delta (x_0))\ \exists \xi$ между $x_0$ и $x$  такая, что \[
+            \dfrac{\varphi(x)}{\psi(x)} = \dfrac{\varphi^{(n+1)}(\xi)}{\psi^{(n+1)}(\xi)}
+        \]
+    \end{lemma}
+    \begin{theorema}{(Формула Тейлора с остаточным членом в форме Лагранжа)}{}
+         Если $f\ (n+1)$ раз дифференцируема в $U_\delta(x_0),\ \delta > 0$, то $(\forall x \in \overset{\circ}{U}_\delta (x_0))\ \exists \xi$ между $x_0$ и $x$ такая, что остаточный член $f(x) - P_n(f,x), $ (где $P_n(f,x)$ -- многочлен Тейлора функции $f$ относительно $x_0$) имеет вид \begin{align*}
+            &f(x) - P_n(f,x) = \dfrac{f^{(n+1)(\xi)}}{(n+1)!}(x-x_0)^{n+1}\\&(f(x) = f(x_0) + \dfrac{f'(x_0)}{1!}(x-x_0)+\dfrac{f''(x_0)}{2!}(x-x_0)^2 + \ldots \\& + \dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \dfrac{f^{(n+1)(\xi)}}{(n+1)!}(x-x_0)^{n+1})
+    \end{align*}
+    \end{theorema}
+    \begin{theorema}{(Формула Тейлора с остаточным членом в форме Пеано)}{}
+         Если $f\ n$ раз дифференцируема в точке $x_0$, то $f(x) - P_n(f,x) = o((x-x_0)^n),\ x\to x_0$, где $P_n(f,x)$ -- многочлен Тейлора степени $n$ функции $f$ относительно $x_0$.
+    \end{theorema}
+    \begin{theorema}{(Единственность представления формулой Тейлора)}{}
+         Если для функции $f$ справедливо представление \[
+            \begin{array}{c}
+                f(x) = a_0 + a_1(x-x_0) + a_2(x-x_0)^2 + \ldots + \\ + \ldots + a_n(x-x_0)^n + o((x-x_0)^n),\ x \to x_0                
+            \end{array}
+        \] и \[
+            \begin{array}{c}
+                f(x) = b_0 + b_1(x-x_0) + b_2(x-x_0)^2 + \ldots + \\ + \ldots + b_n(x-x_0)^n + o((x-x_0)^n), \ x\to x_0                
+            \end{array}
+    \], то $a_k = b_k,\ k = 0,1,\ldots, n$
+    \end{theorema}
+    Если $x_0 = 0$, то формула Тейлора называется формулой Маклорена.
+    \begin{theorema}{(Необходимые и достаточные условия монотонности функции)}{}
+         Пусть $f$ -- дифференцируема на интервале $(a,b)$. Тогда \begin{enumerate*}
+            \item $(\forall x \in (a,b))\ f'(x) \geq 0 \Leftrightarrow$ ($f$ -- неубывающая на $(a,b)$);
+            \item $(\forall x \in (a,b))\ f'(x) \leq 0 \Leftrightarrow$ ($f$ -- невозрастающая на $(a,b)$);
+            \item $(\forall x \in (a,b))\ f'(x) > 0 \Leftrightarrow$ ($f$ -- возрастающая на $(a,b)$);
+            \item $(\forall x \in (a,b))\ f'(x) < 0 \Leftrightarrow$ ($f$ -- убывающая на $(a,b)$). 
+    \end{enumerate*}
+    \end{theorema}
+
+    \begin{note}{}{}
+         В правых частях можно заменить интервал на отрезок при дополнительных предположениях непрерывности функции на нем.
+    \end{note}
+    \begin{theorema}{(Первое достаточное условие локального экстремума функции)}{}
+         Пусть $f$ непрерывна в $U_{\delta_0}(x_0)$ и дифференцируема в $\overset{\circ}{U_{\delta_0}}(x_0),\ \delta_0 > 0$ 
+    \begin{enumerate*}
+        \item Если $(\exists \delta > 0)\ (\forall x \in (x_0 - \delta, x_0)) \ f'(x) (>) \geq 0$ и\\ $(\forall x \in (x_0, x_0 + \delta)\ f'(x) \leq (<) 0$, то $x_0$ -- точка (строгого) локального максимума $f$;
+        \item Если $(\exists \delta > 0)\ (\forall x \in (x_0 - \delta, x))\ f'(x) \leq (<) 0$ и\\ $(\forall x \in (x_0, x_0+\delta)) \ f'(x) \geq (>) 0,$ то $x_0$ -- точка (строгого) локального минимума.
+    \end{enumerate*}
+    \end{theorema}
+    \begin{theorema}{(Второе достаточное условие локального экстремума функции)}{}
+         Если $f\ n$-раз дифференцируема в точке $x_0$, $f^{(n)} (x_0) \neq 0, \ f^{(k)}(x_0) = 0,\ k = 1, 2, \ldots, n-1$, то \begin{enumerate*}
+            \item Если $n$ четно, то $f$ имеет в точке $x_0$ локальный минимум при $f^{(n)} (x_0) > =$ и локальный максимум при $f^{(n)}(x_0) < 0.$
+            \item Если $n$ нечетно, то $f$ не имеет локального экстремума в точке $x_0$.
+    \end{enumerate*}
+    \end{theorema}
+    \begin{definition}{}{}
+        $f$ называется выпуклой (вниз)(вогнутой вверх) на $(a,b)$, если ее график лежит не выше хорды, стягивающей любые две точки этого графика над $(a,b)$. $f$ называется выпуклой (вверх)(вогнутой (вниз)) на $(a,b)$, если ее график лежит не ниже хорды, стягивающей любые две точки этого графика над $(a,b)$.
+    \end{definition}
+    
+    \begin{theorema}{(Необходимые и достаточные условия (строгой) выпуклости)}{}
+         Пусть $f$ дважды дифференцируема на $(a,b)$ \begin{enumerate*}
+            \item ($f$ выпукла вниз на $(a,b)$) $\Longleftrightarrow ((\forall x \in(a,b)) \ f''(x)\geq 0)$
+            \item ($f$ выпукла вверх на $(a,b)$) $\Longleftrightarrow ((\forall x \in (a,b)) f''(x) \leq 0)$
+            \item ($f$ строго выпукла вниз на $(a,b)$) $\Longleftarrow ((\forall x \in (a,b)) f''(x) > 0)$ 
+            \item ($f$ строго выпукла вверх на $(a,b)$) $\Longleftarrow ((\forall x \in (a,b)) f''(x) < 0)$		
+    \end{enumerate*}
+    \end{theorema}
+    \begin{note}{}{}
+         $3), 4) \Rightarrow$, вообще говоря, неверно.
+    \end{note}
+    \Ex (к замечанию)
+    
+    $\pm x^4, x\in (-1, 1)$  
+    
+    \begin{definition}{}{}
+         Пусть $f$ непрерывна в $U_{\delta_0}(a),\ \exists f'(a) \in\overline{\mathbb R}$ и $\exists \delta >0$, что либо на $(a-\delta, a))\ f$ выпукла вниз, а на $(a, a+\delta)\ f$ выпукла вверх, либо на $(a-\delta, a))\ f$ выпукла вверх, а на $(a, a+\delta)\ f$ выпукла вниз. Тогда $a$ -- называется точкой перегиба.
+    \end{definition}
+    \begin{theorema}{(Необходимые и достаточные условия точки перегиба)}{}
+        Пусть $f$ непрерывна в $U_{\delta_0}(a)$, дважды дифференцируема в $\overset{\circ}{U_{\delta_0}}(a)$. Тогда $a$ -- точка перегиба для $f \Leftrightarrow (\exists \delta > 0)$ \\либо $(\forall x \in (a-\delta, a))\ f''(x)\geq 0$ и $(\forall x\in (a,a+\delta))\  f''(x)\ \leq 0$\\либо $(\forall x\in (a-\delta, a))\ f''(x) \leq 0$ и $(\forall x \in (a, a+\delta))\ f''(x) \geq 0$.
+    \end{theorema}
+
+    \begin{theorema}{(Геометрическое необходимое условие точки перегиба)}{}
+        Пусть $f$ дважды дифференцируема в $U_{\delta_0}(a)$ и пусть $y_{\text{кас}}(x) = f(a) + f'(a)(x-a)$ -- уравнение касательной к графику $y = f(x)$ в точке $(a,f(a))$. Если $a$ -- точка перегиба для $f$, то $(\exists \delta > 0)$ такое, что\\либо $(\forall x \in (a-\delta, a))\ y_{\text{кас}} \leq f(x)$ и $(\forall x\in (a,a+\delta))\ y_{\text{кас}}(x)\geq f(x)$,\\либо $(\forall x\in (a-\delta, a))\ y_{\text{кас}}(x) \geq f(x)$ и $(\forall x\in (a,a+\delta))\ y_{\text{кас}}(x) \leq f(x)$.\\(График расположен по разные стороны от касательной)
+    \end{theorema}
+
+    \begin{note}{}{}
+         Условие не является достаточным.
+    \end{note}
+    \Ex (к замечанию)
+    \begin{align*}
+        &y = \begin{cases}
+                &(2+\sin\dfrac{1}{x})x^5,\ x\neq 0\\
+                &0,\ x= 0.
+            \end{cases}\\
+        &y' = \begin{cases}
+                  &5x^4(2+\sin\dfrac{1}{x}) - x^3\cos\dfrac{1}{x},\ x\neq 0\\
+                  &0,\ x = 0.
+                \end{cases}\\
+          &y'' = \begin{cases}
+                      &20x^3(2+\sin\dfrac{1}{x}) - 8x^2\cos\dfrac{1}{x} - x\sin\dfrac{1}{x},\ x\neq 0\\
+                      &0, x = 0.
+                 \end{cases}
+    \end{align*}
+    Точкой перегиба не является 0, хотя график расположен по разные стороны касательной.
+    
+    \begin{definition}{}{}
+         Прямая $x=x_0$ называется вертикальной асимптотой графика функции $y = f(x)$, если $\lim\limits_{x\to x_0+0}f(x) = \pm\infty$ или $\lim\limits_{x\to x_0-0} f(x) = \pm\infty$
+    \end{definition}
+    \begin{definition}{}{}
+        Прямая $y = kx+b$ называется невертикальной асимптотой графика функции $y = f(x),\ x\to \pm \infty$, если $\lim\limits_{x\to \pm\infty} (f(x) - kx - b) = 0$. Если $k=0$, то асимптота называется горизонтальной. Если $k\neq 0$, то наклонной.
+    \end{definition}
+    \begin{theorema}{(Необходимое и достаточное существование асимптоты)}{}
+        Прямая $y = kx+b$ является асимптотой графика функции $y = f(x)$ (при $x\to +\infty$) тогда и только тогда, когда $\exists k = \lim\limits_{x\to + \infty} \dfrac{f(x)}{x}$ и $\exists b = \lim\limits_{x\to + \infty} (f(x) - kx)$
+    \end{theorema}
+    \section{Функции многих переменных. Частные производные. Градиент и его геометрический
+    смысл. Метод градиентного спуска. Поиск экстремумов функций от многих
+    переменных.}
+    \subsection*{Дифференцируемость функций многих переменных}
+
+    \begin{definition}{}{}
+        \textit{(Полным) приращением функции $f(\vv{x})$ в точке} $\vv{x}_0 \in \R^n$, отвечающим приращению $\vv{\Delta x} := \vv{x} - \vv{x_0}$, называется
+        \[
+            \Delta f(\vv{x}_0) = f(\vv{x}) - f(\vv{x}_0)
+        \]
+    \end{definition}
+    
+    \begin{definition}{}{}
+        Пусть $f$ определена в некоторой окрестности точки $\vv{x}_0$. Тогда $f$ называется \textit{дифференцируемой} в точке $\vv{x}_0$, если её приращение $\Delta f(\vv{x}_0)$ может быть записано в виде
+        \[
+            \Delta f(\vv{x}_0) = \trbr{\vv{A}, \vv{\Delta x}} + o(|\vv{\Delta x}|),\ \vv{\Delta x} \to \vv{0}
+        \]
+        где $\vv{A} \in \R^n$ - \textit{градиент} $f$ в точке $\vv{x}_0$. Обозначается как
+        \[
+            \grad f(\vv{x}_0) := \vv{A}
+        \]
+        Выражение $\trbr{\vv{A}, \vv{\Delta x}}$ называется \textit{дифференциалом} функции $f$ в точке $\vv{x}_0$:
+        \[
+            df(\vv{x}_0) := \trbr{\vv{A}, \vv{\Delta x}}
+        \]
+    \end{definition}
+    
+    \begin{definition}{}{}
+        \textit{Частным (частичным) приращением функции $f(\vv{x})$ в точке} $\vv{x}_0 \in \R^n$ называется приращение функции $f(\vv{x})$, отвечающее 	приращению $\vv{\Delta x}_j$, имеющуему вид
+        \[
+            \vv{\Delta x}_j = (0, \ldots, \Delta x_j, \ldots, 0)
+        \]
+        Частичное приращение обозначается как
+        \[
+            \Delta_j f(\vv{x}_0) = f(\vv{x}_0 + \vv{\Delta x_j}) - f(\vv{x}_0) = f(x_{1, 0}, \ldots, x_{j - 1, 0}, x_{j, 0} + \Delta x_j, x_{j + 1, 0}, \ldots, x_{n, 0}) - f(x_{1, 0}, \ldots, x_{n, 0})
+        \]
+    \end{definition}
+    
+    \begin{note}{}{}
+        Заметим, что частичное приращение является приращением функции одной переменной:
+        \[
+            \Delta_j f(\vv{x}_0) = \Delta \phi_j (x_{j, 0})
+        \]
+        где $\phi_j(x_j) = f(x_{1, 0}, \ldots, x_{j - 1, 0}, x_j, x_{j + 1, 0}, \ldots, x_{n, 0})$
+    \end{note}
+    
+    \begin{definition}{}{}
+        \textit{Частной производной} функции $f(\vv{x})$ в точке $\vv{x}_0$ по $j$-й переменной называется производная функции $\phi_j$ в точке $x_{j, 0}$, если она существует. Обозначается как 
+        \[
+            f'_{x_j}(\vv{x}_0) = \pd{f}{x_j} (\vv{x}_0) := \phi'_j (x_{j, 0})
+        \]
+    \end{definition}
+    
+    \begin{definition}{}{}
+        Также мы будем говорить о просто частной производной функции $f(\vv{x})$, которая является ничем иным как функцией многих переменных:
+        \[
+            \pd{f}{x} (\vv{x}) := \phi'_j(\vv{x}) = \phi'_j (x_{1, 0}, \ldots, x_{n, 0})
+        \]
+    \end{definition}
+    
+    \begin{note}{}{}
+        То есть взяли производную от $\phi_j$, при этом не подставляли ни один аргумент как числовое значение. Полученная функция как функция от $\vv{x}$ является просто частной производной.
+    \end{note}
+    
+    \begin{theorema}{}{}
+        Если $f$ дифференцируема в точке $\vv{x}_0$, то существуют частные производные $\forall j \in \range{n}$, причём
+        \[
+            \grad f(\vv{x}_0) = \left(\frac{\vdelta f}{\vdelta x_1}(\vv{x}_0), \ldots, \frac{\vdelta f}{\vdelta x_n}(\vv{x}_0)\right)
+        \]
+    \end{theorema}
+    
+    \begin{theorema}{}{}
+        Если $f$ дифференцируема в $\vv{x}_0$, то она непрерывна в $\vv{x}_0$.
+    \end{theorema}
+    
+    
+    \begin{theorema}{(Достаточное условие дифференцируемости)}{}
+        Если $f$ определена в окрестности точки $\vv{x}_0$ вместе со своими частными производными, причём они непрерывны в $\vv{x}_0$, то $f$ дифференцируема в $\vv{x}_0$
+    \end{theorema}
+    \subsection*{Геометрический смысл градиента и дифференцируемости}
+
+\begin{definition}
+	\textit{Область} - это открытое связное множество. \textit{Замкнутая область} - это замыкание области.
+\end{definition}
+
+\begin{definition}{}{}
+	\textit{Параметрически заданной поверхностью} в $\R^3$ называется множество точек $(x, y, z) \in \R^3$, задаваемых непрерывными в некоторой замкнутой области $\vv{D} \subset \R^2$ функциями
+	\begin{align*}
+		&{x = \phi(u, v)}
+		\\
+		&{y = \psi(u, v)}
+		\\
+		&{z = \chi(u, v)}
+	\end{align*}
+	В частности, график функции $z = f(x, y)$, где $(x, y) \in \vv{D}$.
+\end{definition}
+
+\begin{definition}{}{}
+	Плоскость, проходящая через точку $M_0(x_0, y_0, f(x_0, y_0))$, называется \textit{касательной плоскостью} к графику $z = f(x, y)$ в данной точке, если для $M_1(x, y, f(x, y))$ угол между секущей $M_0 M_1$ и плоскостью стремится к нулю при $(x, y) \to (x_0, y_0)$ в $\vv{D}$.
+\end{definition}
+
+\begin{theorema}{}{}
+	Если $f(x, y)$ дифференцируема в точке $(x_0, y_0)$, то касательная плоскость к $z = f(x, y)$ в точке $M_0(x_0, y_0, f(x_0, y_0))$ существует и задаётся уравнением
+	\[
+		z - f(x_0, y_0) = \pd{f}{x} (x_0, y_0) (x - x_0) + \pd{f}{y} (x_0, y_0) (y - y_0)
+	\]
+\end{theorema}
+
+
+\begin{definition}{}{}
+	\textit{Производной функции $f$ в точке $\vv{x}_0$ по направлению} $\vv{l}$ называется предел (если он существует):
+	\[
+		\pd{f}{\vv{l}} (\vv{x}_0) := \liml_{t \to 0+} \frac{f(\vv{x}_0 + t\vv{l}) - f(\vv{x}_0)}{t}
+	\]
+\end{definition}
+
+\begin{note}{}{}
+	В разных книгах производную по направлению определяют по-разному. Например, могут убрать стремление $t$ к 0 лишь с положительной стороны, могут добавить модуль $\vv{l}$ в знаменатель или потребовать, что $\vv{l}$ имеет единичную длину. Поэтому, если нужно прочитать доказательство, использующее производную по направлению, то стоит уточнить, что именно под этим понятием подразумевает автор.
+\end{note}
+
+\begin{proposition}{}{}
+	Если $f$ дифференцируема в $\vv{x}_0$, то она имеет производную по любому направлению $\vv{l} \neq \vv{0}$, причём
+	\[
+		\pd{f}{\vv{l}} (\vv{x}_0) = \trbr{\grad f(\vv{x}_0), \vv{l}}
+	\]
+\end{proposition}
+
+    \cons 
+	Если $f$ дифференцируема в точке $\vv{x}_0$ и $\grad f(\vv{x}_0) \neq \vv{0}$, то производная по направлению $\vv{l},\ |\vv{l}| = 1$
+	\begin{itemize}
+		\item Максимальна при $\vv{l} = \frac{\grad f(\vv{x}_0)}{|\grad f(\vv{x}_0)|}$
+		
+		\item Минимальна при $\vv{l} = -\frac{\grad f(\vv{x}_0)}{|\grad f(\vv{x}_0)|}$
+	\end{itemize}
+
+\begin{note}{}{}
+	То есть по сути данное следствие указывает, что изменение функции максимально по направлению градиента в данной точке и минимально в обратную сторону.
+\end{note}
+    \section{Интегрирование. Определенный и неопределенный интегралы. Методы интегрирования
+    функций. Первообразные различных элементарных функций.}
+
+    \section{Кратные интегралы (двойные, тройные), замена координат, связь с повторными.}
+    \subsection*{Определение кратного интеграла}
+\subsubsection*{Случай, когда $f(x)$ - ограниченная функция.}
+\begin{definition}{}{}
+Пусть $f$ -- ограниченная функция, заданная на измеримом по Лебегу Жордану) множестве $E \subset \R^n$ конечной меры. 
+
+$\textbf{Разбиением}$ множества $E$ называется $E=\bigsqcup\limits_{k=1}^N E_k$, где $E_k$ - измеримые по Лебегу (Жордану). \newline В качестве $\Delta x_k$ будем брать меру множеств $E_k$. 
+
+Обозначим $M_k=\sup\limits_{x\in E_k} f\left(x\right) ,\  m_k=\inf\limits_{x\in E_k}f\left(x\right)$ \newline
+Суммы Дарбу - Лебега (Жордана): верхняя $\mathcal{U}(P, f)=\sum\limits_{k=1}^N M_k \cdot \mu_{(J)}(E_k)$, нижняя $L(P, f)=\sum\limits_{k=1}^N m_k \cdot \mu_{(J)}(E_k)$.
+\newline Верхний интеграл Лебега или Римана (L)(R)$\ \overline{I}_E(f)=\inf\limits_P \mathcal{U}(P, f)$,\newline Нижний интеграл Лебега или Римана (L)(R)$\ \underline{I}_E(f)=\sup\limits_P L(P, f)$
+\end{definition}
+\begin{definition}{}{}
+Если (R)$\ \overline{I}_E(f)=$ (R)$\ \underline{I}_E(f)$, то $f$ называется интегрируемой по Риману на $E$, $\int\limits_E f(x)dx=$ (R)$\ \overline{I}_E(f)$ \newline
+Если (L)$\ \overline{I}_E(f)=$ (L)$\ \underline{I}_E(f)$, то $f$ называется интегрируемой по Лебегу на $E$, $\int\limits_E f(x)d\mu (x)= \text{(L) }\overline{I}_E(f)$
+\end{definition}
+\textbf{Утв. 1} Функция $f$ интегрируема по Риману на $[a,b]$(в смысле старого определения) $\Leftrightarrow$ $f$ интегрируема по Риману на $E=[a,b] \subset \R^1$.
+\begin{definition}{}{}
+	\mbox{Пусть $ f:E\to\mathbb{R} $} ---  ограниченная измеримая на измеримом по Лебегу множестве \mbox{$ E\subset\mathbb{R}^n $} конечной меры функция.
+
+	Если $ M=\sup\limits_{x\in E}f(x), $ $ m=\inf\limits_{x\in E}f(x), $ то \textbf{разбиением Лебега}, отвечающим разбиению $ Q=\{m=y_0<y_1<\ldots <y_N=M\}, $ называется разбиение
+	$ P: E=\bigsqcup\limits_{i=1}^{N}E_i$, \mbox{где $E_i=\{x\in E: fx)\in [y_{i-1}, y_i)\},$} $i=1, \ldots, N-1$.
+	\[E_N= \{x\in E: fx)\in [y_{N-1}, y_N]\}\]
+	\mbox{Тогда интегральной суммой Лебега назовем $S(Q, f, \{t_i\})=\sum\limits_{i=1}^N f(t_i)\mu(E_i)$, где $t_i \in E_i,$}$ 
+	\newline i = 1, \ldots, N$.
+\end{definition} 
+\begin{theorema}{(Основная теорема об интеграле Лебега от ограниченных функций)}{}
+	Если $f(x)$ ограниченная измеримая на измеримом по Лебегу множестве $ E\subset\R^n $ конечной меры  функция, то она интегрируема по Лебегу (суммируема) на $E$, причем ее интеграл равен пределу интегральных сумм с разбиениями Лебега, отвечающими разбиениям  $ Q $, при стремящемся к нулю диаметре последнего, т.е. $$\int\limits_E f(x)d\mu(x)=\lim_{\Delta(Q)\to 0}S(Q,f,\{t_i\}).$$
+	Это значит, что $(\forall \varepsilon >0)(\exists \delta > 0)(\forall Q, \Delta(Q)<\delta) \text{ и } \forall \{t_i\}, t_i \in E_i, i=1,\ldots, N,$ где $E=\bigsqcup\limits_{i=1}^N E_i$ --- разбиение Лебега, отвечающее разбиению $Q$ отрезка $[m, M]$, выполняется $|S(Q, f, \{t_i\})-\int\limits_E f(x)d\mu(x)|<\varepsilon$.
+\end{theorema}
+
+\subsubsection*{Случай, когда $f(x)\geqslant 0$.}
+Пусть $f(x)\geqslant 0$ - измеримая на измеримом по Лебегу множестве $E$ конечной меры функция. В качестве разбиений будем допускать и разбиения на счетное число измеримых по Лебегу множеств: $E = \bigsqcup\limits_{i=0 }^{\infty}E_i,\ E_0:=\{x\in E:f(x)=+\infty\}$. Обратите внимание! Индексацию ведем с 0, и $E_0$ жестко фиксируем. Соглашение: если $\mu(E_0)=0$, то $(+\infty)\cdot \mu(E_0)=0$. Получаем, что мы ничего не можем сказать о $M$, а $m=0$. 
+
+Тогда разбиение принимает вид $Q: 0=y_0<y_1<\ldots$. 
+
+В качестве $E_i = \{x\in E: f(x)\in[y_{i-1}, y_i)\}, i=1,\ldots$.
+
+$\Delta(Q):=\sup\limits_{i=1, \ldots}(y_i-y_{i-1})$, может равняться и $+\infty$.
+
+$L(P, f)=\sum\limits_{i=0}^{\infty}m_i\cdot \mu(E_i),\  \mathcal{U}(P, f)=\sum\limits_{i=0}^{\infty}M_i\cdot \mu(E_i)$ 
+
+\begin{theorema}{Основная теорема об интеграле Лебега для неограниченных измеримых функций}{}
+Если $f(x)$ - неотрицательная, измеримая на измеримом по Лебегу множестве $E\subset \R^n$ конечной меры, то она интегрируема по Лебегу на $E$, причем
+$\int\limits_E f(x)d\mu(x)=\lim\limits_{\Delta(Q)\to0}S(Q, f, \{t_i\}).$ 
+
+При конечном значении интеграла понятие предела такого вида -- то же, что и в предыдущей основной теореме, если же интеграл бесконечен, то требуется, чтобы \newline$(\forall \varepsilon>0)( \exists \delta > 0)(\forall Q, \Delta(Q)<\delta) \text{ и } \forall \{t_i\}, t_i \in E_i, i=1,\ldots$, где $E=\bigsqcup\limits_{i=1}^{\infty} E_i$ --- разбиение Лебега, отвечающее разбиению $Q$ полуоси $[0, +\infty)$, выполняется $S(Q, f, \{t_i\})\geqslant\varepsilon$.
+\end{theorema}
+
+\begin{definition}{}{}
+Если $\int\limits_E f(x)d\mu(x) < +\infty$, то $f$ называется суммируемой на $E$.
+\end{definition}
+
+\subsubsection*{Случай, когда $f(x)$ - любого знака.}
+Пусть $f(x)$ измерима на измеримом по Лебегу множестве $E \subset \R^n$ конечной меры. Введем $f_+(x):=\max(f(x), 0), f_-(x):=\max(-f(x), 0)$ - это неотрицательные, измеримые функции. Такие функции интегрируемы по Лебегу, то есть существуют $\int\limits_E f_+(x)d\mu(x), \int\limits_E f_-(x)d\mu(x)$. Если хотя бы один из этих интегралов конечен, то $f$ называется интегрируемой по Лебегу. Если оба конечны, то $f$ - суммируемая на $E$.
+$$\int\limits_E f_+(x)d\mu(x)- \int\limits_E f_-(x)d\mu(x) = \int\limits_E f(x)d\mu(x)$$
+Пример измеримой, но не интегрируемой по Лебегу функции: возьмем отрезок, на одной его половине функция равна $+\infty$, на другой $-\infty$.
+    \section{Элементы функционального анализа: нормированные, метрические пространства,
+    непрерывность, ограниченность.}
+    В вопросе про топологию
+    \section{Алгебра и сигма-алгебра. Мера. Измеримые множества. Измеримые функции. Интеграл
+    Лебега.}
+\end{multicols}

@@ -1,0 +1,32 @@
+\documentclass[12pt]{report}
+\usepackage{mystyle}
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+\usepackage{nccmath}
+\usepackage{xpatch}
+\xpatchcmd{\NCC@ignorepar}{%
+\abovedisplayskip\abovedisplayshortskip}
+{%
+\abovedisplayskip\abovedisplayshortskip%
+\belowdisplayskip\belowdisplayshortskip}
+{}{}
+\usetikzlibrary{positioning, arrows.meta}
+\tikzset{%
+    myarrow/.style = {-Stealth, shorten >=3pt}
+} 
+\newcommand{\mypoint}[2]{\tikz[remember picture]{\node[inner sep=0, anchor=base](#1){$#2$};}}
+\usepackage{arydshln}
+\makeatletter
+\newcommand*\dashline{\rotatebox[origin=c]{90}{$\dabar@\dabar@\dabar@$}}
+\makeatother
+\begin{document}
+% \righthyphenmin=2
+\input{base/linear_algebra.tex}
+\input{base/mathematical_analysis.tex}
+\input{base/probability.tex}
+\input{base/algorithms.tex}
+\input{prof/combinatory.tex}
+\input{prof/computer_science.tex}
+\input{prof/data_analysis.tex}
+\input{prof/control_theory.tex}
+\end{document}
