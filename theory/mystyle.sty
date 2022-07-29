@@ -10,6 +10,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{setspace}
+\usepackage{listings, lstautogobble}
 \usepackage{relsize}
 \usepackage{anyfontsize}
 \usepackage{caption}
@@ -28,7 +29,7 @@
 \usepackage{tikz}
 \usepackage[fontsize=12pt]{fontsize}
 \defaultfontfeatures{Scale=MatchLowercase}
-\setmainfont{Montserrat} 
+\setmainfont{Montserrat Medium}
 % \setmathfont{TeX Gyre Pagella Math}
 \setmathfont{FiraMath-Regular}
 \setmathfont{Latin Modern Math}[range={frak,\bigcap,\bigcup, \vdots, \ddots, \intercal}]
@@ -424,3 +425,15 @@ to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
 \makeatletter
 \newcommand*\dashline{\rotatebox[origin=c]{90}{$\dabar@\dabar@\dabar@$}}
 \makeatother
+
+
+
+\lstset{language=C++,
+                basicstyle=\footnotesize\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{gray}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#},
+                breaklines=true,
+                autogobble=true
+}
