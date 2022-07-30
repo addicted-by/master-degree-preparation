@@ -653,6 +653,7 @@ $(f[-a,a]) = [a, -a]$
     \\Если в определении дифференцируемости $\Delta x \to + 0 (-0)$, то имеем  дифференцируемость справа(слева).
     \end{definition}
     \subsection*{Производные и дифференциалы высших порядков}
+    Введем определения:
     \begin{definition}{}{}
          $f^{(0)} := f,\ f^{(1)} := f'$. По индукции, если $f^{(n-1)}$ дифференцируема в точке $x_0$, то $f^{(n)} (x_0) := (f^{(n-1)})'(x_0)$. Если $\exists f^{(n)}(x_0) \in\mathbb R$, то $f\ n $ раз дифференцируема в точке $x_0$.
     \end{definition}
@@ -735,7 +736,9 @@ $(f[-a,a]) = [a, -a]$
     \subsection*{Формула Тейлора}
     \begin{lemma}{}{}
         Если $f$ $n$ раз дифференцируема в точке $x_0$, то $\exists !$ многочлен степени $\leq n\ P_n(f,x)$, такой, что $f(x_0) = P_n(f,x_0),\ f'(x_0) = P_n'(f,x_0)\ldots f^{(n)} (x_0) = P^{(n)}_n(f,x_0)$. Этот многочлен имеет вид \[
-            P_n(f,x) = f(x_0) + \dfrac{f'(x_0)}{1!}(x-x_0) + \dfrac{f''(x_0)}{2!}(x-x_0)^2 + \ldots + \dfrac{f^{(n)(x_0)}}{n!} (x-x_0)^n
+            \begin{array}{c}
+                P_n(f,x) = f(x_0) + \dfrac{f'(x_0)}{1!}(x-x_0) + \dfrac{f''(x_0)}{2!}(x-x_0)^2 + \ldots + \\ + \dfrac{f^{(n)(x_0)}}{n!} (x-x_0)^n                
+            \end{array}
         \] и называется многочленом Тейлора степени $n$ относительно $x_0$.
     \end{lemma}
     \begin{lemma}{}{}
@@ -858,7 +861,6 @@ $(f[-a,a]) = [a, -a]$
             \Delta f(\vv{x}_0) = f(\vv{x}) - f(\vv{x}_0)
         \]
     \end{definition}
-    
     \begin{definition}{}{}
         Пусть $f$ определена в некоторой окрестности точки $\vv{x}_0$. Тогда $f$ называется \textit{дифференцируемой} в точке $\vv{x}_0$, если её приращение $\Delta f(\vv{x}_0)$ может быть записано в виде
         \[
@@ -881,7 +883,9 @@ $(f[-a,a]) = [a, -a]$
         \]
         Частичное приращение обозначается как
         \[
-            \Delta_j f(\vv{x}_0) = f(\vv{x}_0 + \vv{\Delta x_j}) - f(\vv{x}_0) = f(x_{1, 0}, \ldots, x_{j - 1, 0}, x_{j, 0} + \Delta x_j, x_{j + 1, 0}, \ldots, x_{n, 0}) - f(x_{1, 0}, \ldots, x_{n, 0})
+            \begin{array}{c}
+                \Delta_j f(\vv{x}_0) = f(\vv{x}_0 + \vv{\Delta x_j}) - f(\vv{x}_0) = \\ = f(x_{1, 0}, \ldots, x_{j - 1, 0}, x_{j, 0} + \Delta x_j, x_{j + 1, 0}, \ldots, x_{n, 0}) - \\ - f(x_{1, 0}, \ldots, x_{n, 0})                
+            \end{array}
         \]
     \end{definition}
     
@@ -914,7 +918,7 @@ $(f[-a,a]) = [a, -a]$
     \begin{theorema}{}{}
         Если $f$ дифференцируема в точке $\vv{x}_0$, то существуют частные производные $\forall j \in \range{n}$, причём
         \[
-            \grad f(\vv{x}_0) = \left(\frac{\vdelta f}{\vdelta x_1}(\vv{x}_0), \ldots, \frac{\vdelta f}{\vdelta x_n}(\vv{x}_0)\right)
+            \grad f(\vv{x}_0) = \left(\dfrac{\vdelta f}{\vdelta x_1}(\vv{x}_0), \ldots, \dfrac{\vdelta f}{\vdelta x_n}(\vv{x}_0)\right)
         \]
     \end{theorema}
     
@@ -959,7 +963,7 @@ $(f[-a,a]) = [a, -a]$
 \begin{definition}{}{}
 	\textit{Производной функции $f$ в точке $\vv{x}_0$ по направлению} $\vv{l}$ называется предел (если он существует):
 	\[
-		\pd{f}{\vv{l}} (\vv{x}_0) := \liml_{t \to 0+} \frac{f(\vv{x}_0 + t\vv{l}) - f(\vv{x}_0)}{t}
+		\pd{f}{\vv{l}} (\vv{x}_0) := \liml_{t \to 0+} \dfrac{f(\vv{x}_0 + t\vv{l}) - f(\vv{x}_0)}{t}
 	\]
 \end{definition}
 
@@ -977,9 +981,9 @@ $(f[-a,a]) = [a, -a]$
     \cons 
 	Если $f$ дифференцируема в точке $\vv{x}_0$ и $\grad f(\vv{x}_0) \neq \vv{0}$, то производная по направлению $\vv{l},\ |\vv{l}| = 1$
 	\begin{itemize}
-		\item Максимальна при $\vv{l} = \frac{\grad f(\vv{x}_0)}{|\grad f(\vv{x}_0)|}$
+		\item Максимальна при $\vv{l} = \dfrac{\grad f(\vv{x}_0)}{|\grad f(\vv{x}_0)|}$
 		
-		\item Минимальна при $\vv{l} = -\frac{\grad f(\vv{x}_0)}{|\grad f(\vv{x}_0)|}$
+		\item Минимальна при $\vv{l} = -\dfrac{\grad f(\vv{x}_0)}{|\grad f(\vv{x}_0)|}$
 	\end{itemize}
 
 \begin{note}{}{}
@@ -1011,7 +1015,7 @@ $\textbf{Разбиением}$ множества $E$ называется $E=\
 	Если $ M=\sup\limits_{x\in E}f(x), $ $ m=\inf\limits_{x\in E}f(x), $ то \textbf{разбиением Лебега}, отвечающим разбиению $ Q=\{m=y_0<y_1<\ldots <y_N=M\}, $ называется разбиение
 	$ P: E=\bigsqcup\limits_{i=1}^{N}E_i$, \mbox{где $E_i=\{x\in E: fx)\in [y_{i-1}, y_i)\},$} $i=1, \ldots, N-1$.
 	\[E_N= \{x\in E: fx)\in [y_{N-1}, y_N]\}\]
-	\mbox{Тогда интегральной суммой Лебега назовем $S(Q, f, \{t_i\})=\sum\limits_{i=1}^N f(t_i)\mu(E_i)$, где $t_i \in E_i,$}$ 
+	Тогда интегральной суммой Лебега назовем \mbox{$S(Q, f, \{t_i\})=\sum\limits_{i=1}^N f(t_i)\mu(E_i)$, где $t_i \in E_i,$} $ 
 	\newline i = 1, \ldots, N$.
 \end{definition} 
 \begin{theorema}{(Основная теорема об интеграле Лебега от ограниченных функций)}{}

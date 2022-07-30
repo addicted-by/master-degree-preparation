@@ -6,20 +6,456 @@
     простейшие дискретные случаи (выборки с порядком и без него, упорядоченные и
     неупорядоченные), классическая вероятностная модель. Случайная величина, функция
     распределения.}
-    Математические модели в ТВ. Случайный эксперимент:
+    \subsection*{Математические модели в ТВ}. 
+    Предмет исследования - случайный эксперимент.
+    
+    \begin{note}
+    Требования к случайному эксперименту:
+    \begin{enumerate*}
+        \item Повторяемость, регулярность (эксперимент можно провести сколь угодное число раз);
+        \item Отсутствие детерминистической регулярности (возможность разных исходов);
+        \item Статистическая устойчивость частот (частота одного и того же события при выполнении большого количества эксперементов не должна сильно отличаться)
+    \end{enumerate*}
+    \end{note}
+    Результат экспер. $\to$ элементарный исход ($\omega$).
+    \par
+    $\Omega = \{\omega\}$ - пространство элементарных исходов \
+    \par
+    События $\to$ $A \subseteq \Omega,\  \{A\}= F$ 
+    \par
+    Частота $N(A)$ $\to \ P(A): F \to [0:1]$
+    \par
+    Вероятностное пространство $(\Omega, F, P)$ - состоит из пространства элементарных исходов $\Omega$, сигма-алгебры на этом пространстве (F) и сигма-аддитивной меры (P).
+    \begin{note}
+    Требования к $P$:
+    \begin{enumerate*}
+    \item $P(\Omega) = 1$
+    \item $P(A\cup B) = P(A) + P(B)$
+    \end{enumerate*}
+    \end{note}
+    \subsection*{Дискретные модели}
+    \begin{definition}{}{}
+        Дискретными вероятностными моделями называются математические модели $\Omega$, где $ |\Omega|< \infty$
+    \end{definition}
+    Множество всех событий - это множество всех подможножеств $\Omega, \   F = 2^{\Omega}$
+    \subsubsection*{Урновые схемы}
+    В урне лежат N - пронумерованных шариков. Вытаскивают n шаров.
+    \begin{enumerate*}
+        \item c возвращением, с порядком
+        \[
+        \omega = (i_1,\ldots,i_n), \hspace*{0.4cm} |\omega| = N^n
+        \]
+        \item без возвращения, с порядком
+        \[
+        \omega = (i_1,\ldots,i_n), \hspace*{0.5cm} |\omega| = A_N^n
+        \]
+        \item Неупорядоченный выбор без возвращения
+        \[  
+        \omega = \{i_1,\ldots,i_n\}\ \text{или} \ \omega = (i_1,\ldots,i_n), i_1<i_2<...<i_n
+        \]
+        \[
+        |\omega| = C_N^n
+        \]
+        \begin{note}
+        В () обозначаются множества с порядком, в \{\} без порядка
+        \end{note}
+        \item неупорядоченный выбор с возвращением
+        \[
+        \omega = \{j_1,\ldots j_n\}, \hspace*{0.4cm}
+        \]
+        $j_i$ - количество появлений i-го шара в выборке
+        \[
+        \suml_{i = 1}^{N} j_i = n
+        \]
+        \[
+        \|\omega\| = C_{N+n-1}^{N-1}
+        \]
+    \end{enumerate*}
+    \subsubsection*{Схема испытаний бернулли (Bern(p;n))}
+    \[
+        \omega = \{\alpha_1,\ldots \alpha_n\}, \hspace*{0.4cm} \alpha_i \in {0;1}
+    \]
+    \[
+        p(\omega ) = p^{\sum \alpha_i}\cdot(1-p)^{n-\sum \alpha_i}
+    \]
+    
+    
+    \begin{definition}{}{}
+            Классическая ТВ занимается математическими моделями дискретной ТВ, в которой элементарные исходы равновероятны. Вероятность события A задаётся как отношение мощностей:
+            \[
+                P(A) = \dfrac{|A|}{|\Omega|}
+            \]
+            В неклассической ТВ условие равновероятных элементарных исходов не выполняется. Вероятность задаётся поточечно для каждого $\omega$ .
+    \end{definition}
+    \begin{note}
+        В классической ТВ множество $\Omega$ конечно. 
+    \end{note}
+    \subsection*{Случайная величина}
+    \begin{definition}{(Случайная величина)}{}
+        $\xi:\Omega \to \R$ называется случайной величиной, если $\forall x \in \R,\ \xi^{-1}\left([x,+\infty]\right)\in F$. Функция называется случайной величиной, если она является измеримой функцией.
+    \end{definition}
+    \subsection*{Распределение СВ}
+    \begin{definition}{(Распределение СВ)}{}
+            При $|\Omega| < \infty,\ F = 2^{\Omega}$ распределением СВ называется набор значений СВ и соответствующие им вероятности.
+    \end{definition}
+    \begin{note}{}{}
+        Если $\xi$ - СВ на $(\Omega, F, P)$, то распределение $\xi$ называется вероятностной мерой определенной на борелевской $\sigma$ - алгебре $\R$ и обозначается $P_\xi$ 
+            \[
+                B \subseteq \R, \hspace{0.5cm} P_\xi(B) = P(\xi \in B) = P(\omega: \xi(\omega) \in B)
+            \]
+    \end{note}
     \section{Условные вероятности. Определение условной вероятности, формула полной
     вероятности, формула Байеса.}
-
+    \subsubsection*{Условная вероятность}
+    \begin{definition}{(Условная вероятность)}{}
+            Условной вероятностью (в дискретном случае) A относильно B, если $P(B) \ne 0$, определяется следующим соотношением:
+            \[
+            P(A|B) = \dfrac{P(A \cap B)}{P(B)}
+            \]
+    \end{definition}
+    \Ex Игра в покер, у вас на руках 2 карты, на столе лежат ещё 3. Две остальные неизвестны. Вероятность собрать определённую комбинацию постоянно меняется в зависимости от новой карты, которую поставили на стол.
+    \begin{definition}{(Формула полной вер-cти)}{}
+    \[
+        P(A) = \suml_{k = 1}^{n}P(A|B_k)\cdot P(B_k)
+    \]
+    \end{definition}
+    \begin{definition}{(Формула Байеса)}{}
+            \[
+            P(B_k|A) = \dfrac{P(A \cap B_k)}{P(A)} = \dfrac{P(A |B_k) \cdot P(B_k)}{\suml_{i = 1}^{n}P(A|B_i)\cdot P(B_i)}
+            \]
+    \end{definition}
     \section{Математическое ожидание, дисперсия, корреляция. Определение математического
     ожидания, дисперсии, ковариации и корреляции, их свойства.}
-
-    \section{Независимость событий. Попарная независимость и независимость в совокупности.}
-
-    \section{Основные теоремы теории вероятностей. Неравенство Чебышева. Закон больших чисел.
-    Центральная предельная теорема.
-    }
-
+    \subsection*{Математическое ожидание и его свойства}
+    \begin{definition}{(Математическое ожидание)}{}
+            Если $|\Omega| < \infty и  F = 2^{\Omega}$, то математическим ожиданием $\xi$ называется:
+            \[
+            E\xi = \suml_{\omega \in \Omega} \xi(\omega)\cdot p(\omega)
+            \]
+    \end{definition}
+    Формула для подсчёта:
+    \[
+        E\xi = \suml_{i = 1}^k a_i \cdot p_i
+    \]
+    Свойства математического ожидания:
+    \begin{enumerate*}
+        \item $\xi \geq 0, \hspace{0.3cm} E\xi \geq 0;$
+        \item $E(a\xi + b \eta) = a \cdot E\xi +b \cdot E\eta,  \hspace{0.3cm} a,b \in \R,  \hspace{0.3cm} \xi, \eta$ - случайные величины; 
+        \item $\xi \geq \eta, \hspace{0.3cm} E\xi \geq E\eta; $
+        \item $|E\xi| \leq E|\xi|;$
+        \item $(E|\xi \cdot \eta|)^2 \leq E\xi^2 \cdot E\eta^2;$
+        \item $A \in F,\hspace{0.3cm} \xi = I(A) = 
+        \left\{\begin{array}{c}
+            1, \ \omega \in A \\
+            0, \ \omega \notin A
+        \end{array}\right.$, тогда $EI(A) = P(A).$
+        \item Если $\xi \independent \eta,$ то $E(\xi \cdot \eta) = E\xi \cdot E\eta$
+        \item $E \phi(\xi) = \suml_{j = 1}^k \phi(a_i) \cdot p_i$
+    \end{enumerate*}
+    \subsection*{Дисперсия и её свойства}
+    \begin{definition}{(Дисперсия)}{}
+    Дисперсией называется мера разброса случайной величины от ее среднего:
+    \[
+        D\xi = E(\xi-E\xi)^2
+    \]
+    \end{definition}
+    Формула для подсчёта:
+    \[
+        D\xi = E(\xi^2 - 2\xi \cdot E\xi + (E\xi)^2) = E\xi^2 - 2E\xi \cdot E\xi + (E\xi)^2 = E\xi^2 - (E\xi)^2
+    \]
+    \begin{definition}{(Стандартное отклонение)}{}
+            Стандартное отклонение $\sigma = \sqrt{D\xi}$
+    \end{definition}
+    Свойства дисперсии:
+    \begin{enumerate*}
+        \item $D\xi \geq 0,$ причём $D\xi = 0 \iff \xi = const$ почти наверное \ $(P\{\xi = const\} = 1)$
+        \item $D(a+b\xi) = b^2D\xi$
+        \item Дисперсия суммы: 
+    \end{enumerate*}
+    \[
+        \begin{array}{c}
+            D(\xi + \eta) = E\left(\left(\xi + \eta\right) - E\left(\xi + \eta\right)\right)^2 = E\left(\left(\xi - E\xi\right) +\left(\eta - E\eta\right)\right)^2 = \\ = E\left(\left(\xi - E\xi\right)^2 + \left(\eta - E\eta\right)^2 + 2\left(\xi - E\xi\right)\left(\eta - E\eta\right)\right) = \\ = D\xi + D\eta + 2E(\xi - E\xi)(\eta - E\eta)
+        \end{array}
+        \]
+    \subsection*{Ковариация и её свойства}
+    Введем определение ковариации:
+    \begin{definition}{(Ковариация)}{}
+        Ковариацией случайных величин $\xi$ и $\eta$ называется:\useshortskip
+        \[
+        \cov(\xi,\eta) = E(\xi - E\xi)(\eta - E\eta))
+        \]
+    \end{definition}
+    Свойства ковариации:
+    \begin{enumerate*}
+        \item выражение ковариации:
+        \[ 
+        \begin{array}{c}
+            \cov(\xi,\eta) = E\left(\xi\eta - \xi E\eta - \eta E\xi + E\xi E\eta\right) = \\ = E\left(\xi\eta\right) - E\eta E\xi - E\xi E\eta + E\xi E\eta = E(\xi\eta) - E\xi E\eta
+        \end{array}   
+        \]
+        \par
+        \cons $\cov(\xi,\xi) = D\xi$
+        \item $\cov(\xi,\eta)$ - билинейная форма
+        \item Если $\xi \independent \eta$, то $\cov(\xi,\eta) = 0$. Если $\cov(\xi,\eta) = 0$, то не обязательно $\xi \independent \eta$
+        \par
+        \Ex
+        \[
+        \begin{array}{c}
+            \xi = \pm 1; \pm 2 \text{ c вероятностью } 1/4, \hspace{0.3cm} \eta = \xi^2 \\
+            \cov(\xi,\eta) = E(\xi\eta) - E\xi E\eta = E(\xi^3) - E\xi E\eta = 0\\
+            \text{так как} \ E\xi = 0 \ \text{и} \ E\xi^3 = 0 \\
+            \text{Случайные величины независимы, если} \\ p\{\xi = a_i; \eta = b_j\} = p\{\xi = a_i\} \cdot p\{\eta = b_j\} \\
+            p\{\xi = 1; \eta = 4\} = 0 \\ 
+            p\{\xi = 1\} = 1/4, \  p\{\eta = 4\} = 1/2 \\
+            \text{Значит СВ зависимы}
+        \end{array}
+        \]
+    \end{enumerate*}
+    \subsection*{Корреляция и её свойства}
+    \begin{definition}{(Корреляция)}{}
+        Корреляцией СВ $\xi$ и $\eta \neq 0$ называется
+        \[
+        \corr(\xi,\eta) = \dfrac{\cov(\xi,\eta)}{\sqrt{D\xi} \cdot \sqrt{D\eta}}
+        \]
+    \end{definition}
+    \begin{definition}{(Некоррелированные СВ)}{}
+        Некоррелированными СВ $\xi$ и $\eta$ называются СВ, такие что $\corr(\xi,\eta) = 0$
+    \end{definition}
+    Свойства корреляции:
+    \begin{enumerate}
+        \item Если $\xi$ и $\eta$ некоррелированные СВ, то \[
+        D(\xi + \eta) = D\xi + D\eta
+        \]
+        \item 
+        \[
+        \corr(\xi, \eta) \leq 1, \text{причём} \ \corr(\xi, \eta) = \pm 1 \iff \xi = a\eta + b
+        \]
+    \end{enumerate}
+    \section{Независимость событий. \mbox{Попарная} независимость и независимость в совокупности.}
+    \begin{definition}{(Независимость событий)}{}
+            События A и B называются независимыми (обозначение $A \independent B$), если
+            \[
+            P(AB) = P(A \cap B) = P(A) \cdot P(B)
+            \]
+    \end{definition}
+    \begin{definition}{(Попарная независимость)}{}
+            События $A_1, \ldots, A_n \in F$ называются независимыми попарно, если $\forall i \neq j \leq n, \hspace*{0.3cm} A_i \independent A_j$
+    \end{definition}
+    \begin{definition}{(Незав-сть в совокупности)}{}
+            События $A_1, \ldots, A_n \in F$ называются независимыми в совокупности, если $\forall k \leq n, \hspace*{0.2cm} \forall i_k \neq j_k \leq n$
+            \[
+            P(A_{i_1}, \ldots, A_{i_k}) = P(A_{i_1}) \ldots P(A_{i_k})
+            \]
+    \end{definition}
+    \section{Основные теоремы теории вероятностей. Неравенство Чебышева. Закон больших \mbox{чисел}. Центральная предельная \mbox{теорема}.}
+    \subsection*{Неравенство Чебышева}
+    \begin{theorema}{(Неравенство Чебышева)}{}
+        Пусть у СВ $\xi \ \exists \ D\xi$, тогда для $\forall \varepsilon > 0$
+        \[
+        P(|\xi - E\xi| \geq \varepsilon) \leq \dfrac{D\xi}{\varepsilon^2}
+        \]
+    \end{theorema}
+    \begin{proof} 
+    Запишем определение дисперсии:
+    \[
+    \begin{array}{c}
+        D\xi = \mathlarger{\suml_{\omega \in \Omega}} (\xi (\omega) - E\xi )^2 \cdot p(\omega) = \\[0.5cm] = \mathlarger{\suml_{\substack{\omega : \\ |\xi(\omega) - E\xi| \geq \varepsilon}}} (\xi(\omega)) - E\xi)^2 \cdot p(\omega)\ 
+        + \mathlarger{\suml_{\substack{\omega : \\ |\xi(\omega) - E\xi| < \varepsilon}}} (\xi(\omega)) - E\xi)^2 \cdot p(\omega)
+    \end{array}    
+    \]
+        второе слагаемое нас не интересует, тогда:
+    \[
+        \geq \mathlarger{\suml_{\substack{\omega :\\ |\xi(\omega) - E\xi| \geq \varepsilon}}} \varepsilon^2 \cdot p(\omega) = \varepsilon^2 \cdot p\{\omega : |\xi(\omega) - E\xi| \geq \varepsilon\}
+    \]
+    \end{proof}
+    \subsection*{Закон больших чисел}
+    \begin{theorema}{(Закон больших чисел)}{}
+        Если $\xi_1, \ldots, \xi_n$ - независимые одинаково распределённые СВ и $\exists \ D\xi_1$, тогда для $\forall \varepsilon > 0$
+        \[
+            P \left( \Bigg| \dfrac{\xi_1 + \ldots + \xi_n}{n} - E\xi_1 \Bigg| > \varepsilon \right) \to 0, \ \text{при n} \to \infty
+        \]
+    \end{theorema}
+    \begin{proof}
+    Обозначим за $\eta_n = \dfrac{\xi_1 + \ldots + \xi_n}{n}$, а вероятность \mbox{$P \left( \Bigg| \dfrac{\xi_1 + \ldots + \xi_n}{n} - E\xi_1 \Bigg| > \varepsilon \right) = *$} и $E\eta_n = E\xi_1$. Тогда
+    \[
+    \begin{array}{c}
+        * \leq \dfrac{D\eta_n}{\varepsilon^2} = \dfrac{1}{\varepsilon^2} \cdot D \left( \dfrac{\xi_1 + \ldots + \xi_n}{n}\right) = \dfrac{1}{\varepsilon^2 n^2} D(\xi_1 + \ldots + \xi_n) \\
+        = \dfrac{1}{\varepsilon^2 n^2} \mathlarger{\suml_{i = 1}^{n}D\xi_i} = \dfrac{n D\xi_1}{\varepsilon^2 n^2} \to 0, \text{при } n \to \infty
+    \end{array}
+    \]
+    \end{proof}
+    \subsection*{Центральная предельная теорема}
+    \begin{theorema}{(Центральная предельная теорема)}{}
+        Если $\xi_1, \ldots, \xi_n$ - независимые одинаково распределённые СВ и $\exists \ D\xi_1$, ($E\xi_1 = a, D\xi_1 = \sigma^2$ то для $\forall x, y$
+        \[
+        \begin{array}{l}
+        P(x \leq \dfrac{\xi_1 + \ldots + \xi_n - n \cdot E\xi_1}{\sqrt{n}\sigma} \leq y) \to \mathlarger{\intl_x^y} \dfrac{1}{\sqrt{2\pi}} \cdot e^{\dfrac{-t^2}{2}}dt = \\
+        = P(x \leq \eta \leq y), \text{ где } \eta \sim N(0,1) 
+        \end{array}
+        \]
+    \end{theorema}
     \section{Распределения. Стандартные дискретные и непрерывные распределения, их
     математические ожидания, дисперсии и свойства: биномиальное, равномерное,
     нормальное, пуассоновское, показательное, геометрическое.}
+    \subsection*{Биномиальное распределение}
+    Рассмотрим биномиальное распределение и его основные характеристики:
+    \begin{definition}{(Биномиальное распр-ние)}{}
+        Количество успехов в схеме испытаний Бернулли. 
+        \[
+        \begin{array}{c}
+        \xi \sim \bin(n,p), \hspace{0.5cm} \xi \in \{ 0, 1,\ldots, n\} \\
+        P\{\xi = k\} = C_n^k \cdot p^k (1-p)^{n-k} 
+        \end{array}
+        \]
+    \end{definition}
+    Математическое ожидание и дисперсия:
+    \[
+    E\xi = np, \hspace{0.5cm} D\xi = npq
+    \]
+    Свойства:
+    \begin{enumerate*}
+        \item Пусть $\xi_1 \sim \bin(n,p), \ \xi_2 \sim \bin(n,1 - p),$ тогда:
+        \[
+        P(\xi_1 = k) = P(\xi_2 = n - k)
+        \]
+        \item Пусть $\xi_1 \sim \bin(n_1,p), \hspace{0.5cm} \xi_2 \sim \bin(n_2,p),$ тогда:
+        \[
+        \xi_1 + \xi_2 \sim \bin(n_1 + n_2,p)
+        \]
+        \item Если $n = 1$, то получаем распределение Бернулли
+    \end{enumerate*}
+    
+    \subsection*{Пуассоновское распределение}
+    \begin{definition}{(Пуассоновское распр-ние)}{}
+        \[
+        \begin{array}{c}
+        \eta \sim \poiss(\lambda), \hspace{0.5cm} \lambda > 0, \ \eta \in \{ 0, 1, 2,\ldots\} \\
+        P\{\eta = k\} = \dfrac{\lambda^k}{k!} e^{-\lambda}
+        \end{array}
+        \]
+    \end{definition}
+    Математическое ожидание и дисперсия:
+    \[
+    E\xi = \lambda, \hspace{0.5cm} D\xi = \lambda
+    \]
+    Свойства:
+    \begin{enumerate*}
+        \item Пусть $\xi_i \sim \poiss(\lambda_i), \ i = 1, \ldots, n,$
+        тогда
+        \[
+        \xi = \suml_{i = 1}^n \xi_i \sim P\left(\suml_{i = 1}^n \lambda_i \right)
+        \]
+    \end{enumerate*}
+    \subsection*{Геометрическое распределение}
+    \begin{definition}{(Геом-ское распр-ние)}{}
+        Распределение номера 1-ого успеха в схеме \mbox{испытаний Бернулли.}
+        \[
+        \begin{array}{c}
+        \xi \sim \geom(p), \hspace{0.5cm} \xi \in \{1,2, \ldots\} \\
+        P\{\xi = k\} = (1-p)^{k - 1} p
+        \end{array}
+        \]
+    \end{definition}
+    Математическое ожидание и дисперсия:
+    \[
+    E\xi = \dfrac{1}{p}, \hspace{0.5cm} D\xi = \dfrac{q}{p^2}
+    \]
+    Свойства:
+    \begin{enumerate*}
+        \item Если $\xi_1, \ldots, xi_n$ независимы и $\xi_i \sim \geom(p_i),$ $\mathmbox{i = 1, \ldots, n,}$ то:\useshortskip
+        \[
+        \xi = \min\limits_{i}(\xi_i) \sim \geom\left(1 - \prodl_{i = 1}^{n}(1 - p_i) \right)
+        \]
+    \end{enumerate*}
+    \begin{definition}{(Равномерное распр-ние)}{}
+        СВ $\xi$ имеет непрерывное равномерное распределение на интервале $[a,b]$, где $a,b \in \R$ $\xi \sim R[a,b]$, если её плотность $f(x)$ имеет вид:
+        \[
+        f_\xi(x) = 
+        \left\{ 
+        \begin{array}{c}
+             \dfrac{1}{b - a},\ x \in [a,b] \\[0.3cm]
+             0,\ x \notin [a,b]
+        \end{array}\right.
+        \]
+    \end{definition}
+    Функция распределения:
+    \[
+    F_\xi(x) =
+    \left\{ 
+        \begin{array}{c}
+             0,\ x < a \\[0.3cm]
+             \dfrac{x - a}{b - a}, a \leq x \leq b \\ [0.3cm]
+             1,\ x \geq b
+        \end{array}\right.
+    \]
+    Плотность распределения - это производная функции распределения.
+    \par
+    Математическое ожидание и дисперсия:
+    \[
+    E\xi = \dfrac{a + b}{2}, \hspace{0.5cm} D\xi = \dfrac{(b - a)^2}{12}
+    \]
+    Если $a = 0, b = 1$, то есть $\xi \sim R[0,1]$, то такое непрерывное равномерное распределение называют стандартным.
+    
+    \begin{definition}{(Нормальное распр-ние)}{}
+        СВ $\xi$ имеет непрерывное нормальное распределение, $\xi \sim N[\mu,\sigma^2]$, если её плотность $f(x)$ имеет вид:
+        \[
+        f(x) = \dfrac{1}{\sigma \sqrt{2\pi}} e^{-\dfrac{1}{2}\left(\dfrac{x-\mu}{\sigma}\right)^2},
+        \]
+        где $\mu$ - математическое ожидание, медиана или мода распределения, $\sigma$ - среднеквадратическое отклонение, $\sigma^2$ - дисперсия распределения
+    \end{definition}
+    Стандартным нормальным распределением называется нормальное распределение с математическим ожиданием $\mu =0$ и стандартным отклонением $\sigma =1$.
+    \par
+    Свойства:
+    \begin{enumerate*}
+        \item Нормальная СВ представима как сумма произвольного числа независимых нормальных СВ.
+        \par
+        Если СВ $X_1$ и $X_2$ независимы и имеют нормальное распределение с математическими ожиданиями $\mu_1$ и $\mu_2$ и дисперсиями $\sigma_1^2$ и $\sigma_2^2$ соответственно, то $X_1 + X_2$ также имеет нормальное распределение с математическим ожиданием $\mu_1 + \mu_2$ и дисперсией $\sigma_1^2 + \sigma_2^2$.
+        \item Правило трёх сигм $(3\sigma)$ — практически все значения нормально распределённой случайной величины лежат в интервале: 
+        \[
+        (\mu -3\sigma ;\mu +3\sigma)
+        \]
+        где $\mu = E\xi$ — математическое ожидание нормальной СВ.
+        \par
+        Более точно — приблизительно с вероятностью 0,9973 значение нормально распределённой случайной величины лежит в указанном интервале.
+    \end{enumerate*}
+    \begin{definition}{(Показательное распр-ние)}{}
+        СВ $\xi$ имеет экспоненциальное (показательное) распределение, $\xi \sim Exp(\lambda)$, если её плотность $f(x)$ имеет вид:
+        \[
+        f_\xi(x) =
+        \left\{ 
+        \begin{array}{c}
+             \lambda e^{-\lambda x}, x \geq 0 \\[0.3cm]
+             0 , x < 0
+        \end{array}\right.
+        \]
+    \end{definition}
+    Функция распределения:
+    \[
+    F_\xi(x) = 
+    \left\{ 
+        \begin{array}{c}
+             1 - e^{-\lambda x}, x \geq 0 \\[0.3cm]
+             0 , x < 0
+        \end{array}\right.
+    \]
+    Математическое ожидание и дисперсия:
+    \[
+    E\xi = \dfrac{1}{\lambda}, \hspace{0.5cm} D\xi = \dfrac{1}{\lambda^2}
+    \]
+    Свойства:
+    \begin{enumerate}
+        \item Пусть $\xi \sim Exp(\lambda).$ Тогда $P(\xi > s + t | \xi \geq s) = P(\xi > t)$.
+        \par
+        События происходят независимо друг от друга;
+        \item Минимум независимых экспоненциальных случайных величин также экспоненциальная случайная величина
+        \par
+        Пусть $\xi_1,\ldots ,\xi_n$ независимые СВ, и $Exp(\lambda_i)$. Тогда:
+        \[
+        Y = \min \limits_{i = 1,\ldots, n}(X_i)\sim \mathrm Exp \left(\suml_{i = 1}^{n} \lambda_i \right)
+        \]
+        \item Экспоненциальное распределение может быть получено из непрерывного равномерного распределения методом обратного преобразования. Пусть R \sim R[0,1]. Тогда:
+        \[
+        \xi = - \dfrac{1}{\lambda} \ln R \sim Exp(\lambda)
+        \]
+    \end{enumerate}
 \end{multicols}
